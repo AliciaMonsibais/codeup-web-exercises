@@ -37,8 +37,14 @@
             border-collapse: collapse;
             font-size: small;
         }
-        footer {
+        #footer {
             font-size: smaller;
+        }
+        .terms {
+            float: left;
+        }
+        .contact {
+            float: right;
         }
     </style>
 </head>
@@ -52,7 +58,7 @@
     </header>
     <table id="t01">
         <tr>
-            <th colspan="5"><img src="img/codeup-arrow.png" alt="Codeup Arrow">Codeup</th>
+            <th colspan="5";><img src="img/codeup-arrow.png" alt="Codeup Arrow">Codeup</th>
         </tr>
         <tr>
             <td>Repositories</td>
@@ -64,15 +70,17 @@
     </table>
     <table id="t02">
         <tr>
-            <th colspan="3"><strong>Codeup's dev team</strong></th>
+            <th colspan="3""><strong>Codeup's dev team</strong></th>
         </tr>
         <tr>
-            <td><img src="img/48x48.svg">Kent Beck</td>
+            <td style="text-align: left"; width="90%"><img src="img/48x48.svg">Kent Beck
+                <p>KentBeck</p></td>
             <td>Member</td>
             <td>1 team</td>
         </tr>
         <tr>
-            <td><img src="img/48x48.svg">Codeup Instruction Staff</td>
+            <td><img src="img/48x48.svg">Codeup Instruction Staff
+                <p>CodeupInstructors</p></td>
             <td>Member</td>
             <td>1 team</td>
         </tr>
@@ -83,14 +91,16 @@
         </tr>
     </table>
     <hr>
-    <footer>
-        <div>
+    <div id="footer">
+        <div class="terms">
             &copy; 2018 GitHub, Inc.
             <a href="https://help.github.com/en/articles/github-terms-of-service">Terms</a>
             <a href="https://help.github.com/en/articles/github-privacy-statement">Privacy</a>
             <a href="https://github.com/security">Security</a>
             <a href="https://www.githubstatus.com/">Status</a>
             <a href="https://help.github.com/en">Help</a>
+        </div>
+        <div class="contact">
             <a href="https://github.com/contact">Contact GitHub</a>
             <a href="https://github.com/pricing">Pricing</a>
             <a href="https://developer.github.com/">API</a>
@@ -99,6 +109,6 @@
             <a href="https://github.com/about">About</a>
         </div>
 
-    </footer>
+    </div>
 </body>
 </html>
