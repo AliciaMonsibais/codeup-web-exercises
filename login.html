@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Login</title>
+    <style>.container {
+        width: 300px;
+        clear: both;
+    }
+
+    .container input {
+        width: 100%;
+        clear: both;
+    }</style>
 </head>
 <body>
-$END$
+    <div class="container">
+        <form method="POST" action="https://request-inspector.glitch.me/">
+            <label for="username">Username</label>
+                <input type="username" name="username" id="username" autofocus="autofocus" required>
+                <br>
+            <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+            <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+            <label for="weeks">Keep me logged in for 2 weeks</label>
+                <input type="checkbox" id="weeks" name="weeks" value="yes" checked>
+                <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>
