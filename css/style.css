@@ -2,3 +2,41 @@
     color: purple;
     text-decoration: underline;
 }
+h1 {
+    text-align: center;
+}
+h1, h2 {
+    color: darkcyan;
+    text-decoration: underline;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: aliceblue;
+    background-image: url("../img/swirl.jpg");
+}
+li {
+    list-style-type: lower-greek;
+}
+table, td, th {
+    padding: 1em;
+    font-size: 1em;
+}
+/* unvisited link (:link) */
+a:link {
+    color:mediumslateblue;
+}
+
+/* visited link (:visited) */
+a:visited {
+    color:royalblue;
+}
+
+/* mouse hover over link (:hover) */
+a:hover {
+    color:steelblue;
+}
+
+/* active/selected link (:active) */
+a:active {
+    color:blueviolet;
+}
