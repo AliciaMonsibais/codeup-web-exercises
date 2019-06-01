@@ -9,27 +9,68 @@
         <label for="property">Property Type</label>
             <select id="property" name="property">
                 <option value="house">House</option>
-                <option value="rent">Rent</option>
-                <option value="condo">Condo</option>
-                <option value="townhome">Townhome</option>
+                <option value="condo">Condo/Townhome</option>
+                <option value="land">Land</option>
+                <option value="any">Any</option>
+            </select>
         <br>
         <label for="footage">Square Footage</label>
-            <input type="footage" id="footage" name="footage">
+            <select id="footage" name="footage">
+                <option value="500">500-1000sqft</option>
+                <option value="1000">1000-1500sqft</option>
+                <option value="1500">1500-2000sqft</option>
+                <option value="2000">2000-2500sqft</option>
+                <option value="2500">2500-3000sqft</option>
+                <option value="3000">3000-3500sqft</option>
+                <option value="3500">3500-4000sqft</option>
+                <option value="greater">&gt;4000sqft</option>
+                <option value="any">Any Size</option>
+            </select>
         <br>
         <label for="min_price">Minimum Price</label>
-            <input type="min_price" id="min_price" name="min_price">
+            <select id="min_price" name="min_price">
+                <option value="80k">$80k</option>
+                <option value="150k">$150k</option>
+                <option value="250k">$250k</option>
+                <option value="300k">$300k</option>
+                <option value="400k">$400k</option>
+                <option value="450k">$450k</option>
+                <option value="500k">$500k</option>
+            </select>
         <br>
         <label for="max_price">Maximum Price</label>
-            <input type="max_price" id="max_price" name="max_price">
+            <select id="max_price" name="max_price">
+                <option value="150k">$150k</option>
+                <option value="200k">$200k</option>
+                <option value="250k">$250k</option>
+                <option value="300k">$300k</option>
+                <option value="400k">$400k</option>
+                <option value="450k">$450k</option>
+                <option value="500k">$500k</option>
+                <option value="greater">&gt;$500k</option>
+            </select>
         <br>
         <label for="zipcode">Zipcode</label>
             <input type="zipcode" id="zipcode" name="zipcode">
         <br>
         <label for="bedrooms">Number of Bedrooms</label>
-            <input type="bedrooms" id="bedrooms" name="bedrooms">
+            <select id="bedrooms" name="bedrooms">
+                <option value="any">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+            </select>
         <br>
         <label for="bathrooms">Number of Bathrooms</label>
-            <input type="bathrooms" id="bathrooms" name="bathrooms">
+            <select id="bathrooms" name="bathrooms">
+                <option value="any">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+            </select>
         <br>
         <button type="submit">Search Now</button>
 </body>
