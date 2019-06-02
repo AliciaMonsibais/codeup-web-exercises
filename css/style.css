@@ -1,41 +1,102 @@
-h1 {
+html {
+    height: 100%;
+    overflow: hidden;
+
+}h1 {
+    font-size: 250%;
     text-align: center;
 }
+
 h1, h2 {
     color: darkcyan;
     text-decoration: underline;
-}
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: aliceblue;
-    background-image: url("../img/swirl.jpg");
-    background-position: center;
-    background-attachment: fixed;
-
 }
 
 li {
     list-style-type: lower-roman;
 }
+
 li:hover {
     list-style-type: lower-greek;
     font-family: 'Permanent Marker', cursive;
 }
+
+body {
+    margin:0;
+    padding:0;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background-color: aliceblue;
+    background-image: url("../img/swirl.jpg");
+    background-position: center;
+    background-attachment: fixed;
+}
+
+p {
+    font-size: 140%;
+    line-height: 150%;
+}
+
+.section {
+    position: relative;
+    padding: 25vh 10%;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+    transform-style: inherit;
+}
+
+.title {
+    width: 50%;
+    padding: 5%;
+    border-radius: 5px;
+    background: rgba(240, 248, 255, .7);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+.section:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, .7);
+}
+
+.section:nth-child(2n) .title {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.section:nth-child(2n+1) .title {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.section, .section:before {
+    background: 50% 50% / cover;
+}
+
 table, tr, td, th {
     padding: 1em;
     font-size: 1em;
     border-style: groove;
     border-width: 3px;
-
 }
+
 table {
-    background-color: rgba(240, 248, 255, 0.7);
+    background-color: rgba(240, 230, 220, 0.7);
 }
 
 a:link {
     color:mediumslateblue;
 }
-
 
 a:visited {
     color:royalblue;
@@ -45,7 +106,6 @@ a:visited {
 a:hover {
     color:steelblue;
 }
-
 
 a:active {
     color:blueviolet;
