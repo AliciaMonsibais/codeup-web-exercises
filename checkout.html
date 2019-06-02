@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Card Checkout Form</title>
+</head>
+<body>
+    <form method="POST" action="https://request-inspector.glitch.me/">
+        <p>Credit Card Information</p>
+        <label for="credit-card">Credit Card Number</label>
+            <input type="text" id="credit-card" name="credit-card" required>
+        <br>
+        <label for="month">Exp. Month</label>
+        <select id="month" name="month" required>
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+            </select>
+        <label for="year">Exp. Year</label>
+        <select id="year" name="year" required>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+            </select>
+        <br>
+        <label for="security">Security Code</label>
+        <input type="text" id="security" name="security" required>
+        <br>
+    <input type="checkbox" id="keep" name="keep" value="yes"</form>
+        <label for="keep">Keep this credit card on file for future transactions</label>
+        <br>
+
+        <p>Billing Address</p>
+        <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+        <br>
+        <label for="street">Street Address</label>
+            <input type="text" id="street" name="street" required>
+        <label for="apt">Apt/Unit</label>
+            <input type="apt" id="apt" name="apt" required>
+        <br>
+        <label for="city">City</label>
+            <input type="city" id="city" name="city" required>
+        <br>
+        <label for="state">State</label>
+            <select id="state" name="state" required>
+                <option value="alabama">Alabama</option>
+                <option value="alaska">Alaska</option>
+                <option value="arizona">Arizona</option>
+                <option value="arkansas">Arkansas</option>
+                <option value="california">California</option>
+                <option value="colorado">Colorado</option>
+                <option value="connecticut">Connecticut</option>
+                <option value="deleware">Deleware</option>
+                <option value="dc">District of Colombia</option>
+                <option value="florida">Florida</option>
+                <option value="georgia">Georgia</option>
+                <option value="hawaii">Hawaii</option>
+                <option value="idaho">Idaho</option>
+                <option value="illinois">Illinois</option>
+                <option value="indiana">Indiana</option>
+                <option value="iowa">Iowa</option>
+                <option value="kansas">Kansas</option>
+                <option value="kentucky">Kentucky</option>
+                <option value="louisiana">Louisiana</option>
+                <option value="maine">Maine</option>
+                <option value="maryland">Maryland</option>
+                <option value="massachusetts">Massachusetts</option>
+                <option value="michigan">Michigan</option>
+                <option value="minnesota">Minnesota</option>
+                <option value="mississippi">Mississippi</option>
+                <option value="missouri">Missouri</option>
+                <option value="montana">Montana</option>
+                <option value="nebraska">Nebraska</option>
+                <option value="nevada">Nevada</option>
+                <option value="new_hampshire">New Hampshire</option>
+                <option value="new_jersey">New Jersey</option>
+                <option value="new_mexico">New Mexico</option>
+                <option value="new_york">New York</option>
+                <option value="north_carolina">North Carolina</option>
+                <option value="north_dakota">North Dakota</option>
+                <option value="ohio">Ohio</option>
+                <option value="oklahoma">Oklahoma</option>
+                <option value="oregon">Oregon</option>
+                <option value="pennsylvania">Pennsylvania</option>
+                <option value="rhode_island">Rhode Island</option>
+                <option value="south_carolina">South Carolina</option>
+                <option value="south_dakota">South Dakota</option>
+                <option value="tennessee">Tennessee</option>
+                <option value="texas">Texas</option>
+                <option value="utah">Utah</option>
+                <option value="vermont">Vermont</option>
+                <option value="virginia">Virginia</option>
+                <option value="washington">Washington</option>
+                <option value="west_virginia">West Virginia</option>
+                <option value="wisconsin">Wisconsin</option>
+                <option value="wyoming">Wyoming</option>
+            </select>
+        <label for="zipcode">Zipcode</label>
+            <input type="text" id="zipcode" name="zipcode" required>
+        <br>
+        <button type="submit">Buy Now!</button>
+</body>
+</html>
