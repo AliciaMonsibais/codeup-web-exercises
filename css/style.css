@@ -1,8 +1,4 @@
-html {
-    height: 100%;
-    overflow: hidden;
-
-}h1 {
+h1 {
     font-size: 250%;
     text-align: center;
 }
@@ -47,7 +43,7 @@ p {
     min-height: 100vh;
     width: 100vw;
     box-sizing: border-box;
-    box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, .7);
     transform-style: inherit;
 }
 
@@ -56,7 +52,7 @@ p {
     padding: 5%;
     border-radius: 5px;
     background: rgba(240, 248, 255, .7);
-    box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .7);
 }
 
 .section:before {
@@ -66,7 +62,7 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, .7);
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .7);
 }
 
 .section:nth-child(2n) .title {
@@ -82,6 +78,29 @@ p {
 .section, .section:before {
     background: 50% 50% / cover;
 }
+
+#title {
+    z-index:2;
+}
+
+#title h1 {
+    transform: translateZ(.25px) scale(.75);
+    transform-origin: 50% 100%;
+
+}
+
+#section1:before {
+    transform: translateZ(-1px) scale(2);
+}
+
+#section2 {
+    z-index:2;
+}
+
+#section3:before {
+    transform: translateZ(-1px) scale(2);
+}
+
 
 table, tr, td, th {
     padding: 1em;
@@ -110,6 +129,4 @@ a:hover {
 a:active {
     color:blueviolet;
 }
-#product {
-    text-indent: 115px;
-}
+
