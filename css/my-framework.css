@@ -1,0 +1,96 @@
+.btn {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 10px 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*Primary*/
+.btn-primary {
+    border-color: blue;
+    color: blue;
+}
+
+.btn-primary:hover {
+    background-color: blue;
+    color: white;
+}
+
+/*Secondary*/
+.btn-secondary {
+    border-color: grey;
+    color: grey;
+}
+
+.btn-secondary:hover {
+    background-color: grey;
+    color: white;
+}
+
+/*Success*/
+.btn-success {
+    border-color: green;
+    color: green;
+}
+
+.btn-success:hover {
+    background-color: green;
+    color: white;
+}
+
+/*Danger*/
+.btn-danger {
+    border-color: red;
+    color: red;
+}
+
+.btn-danger:hover {
+    background-color: red;
+    color: white;
+}
+
+/*Warning*/
+.btn-warning {
+    border-color: orange;
+    color: orange;
+}
+
+.btn-warning:hover {
+    background-color: orange;
+    color: white;
+}
+
+/*Info*/
+.btn-info {
+    border-color: teal;
+    color: teal
+}
+
+.btn-info:hover {
+    background-color: teal;
+    color: white;
+}
+
+/*Light*/
+.btn-light {
+    border-color: whitesmoke;
+    color: whitesmoke;
+}
+
+.btn-light:hover {
+    background-color: ghostwhite;
+    color: black;
+}
+
+/*Dark*/
+.btn-dark {
+    border-color: black;
+    color: black;
+}
+
+.btn-dark:hover {
+    background-color: black;
+    color: white;
+}
