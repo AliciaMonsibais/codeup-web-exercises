@@ -1,96 +1,145 @@
 .btn {
-    border: 1px solid black;
+    border: 1 px;
     background-color: white;
     color: black;
     padding: 10px 24px;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 /*Primary*/
-.btn-primary {
-    border-color: blue;
-    color: blue;
+.btn-primary{
+    background-color: #147BFF;
+    color: white;
 }
 
-.btn-primary:hover {
-    background-color: blue;
+.btn-outline-primary {
+    border-color: #147BFF;
+    color: #147BFF;
+}
+
+.btn-outline-primary:hover {
+    background-color: #147BFF;
     color: white;
 }
 
 /*Secondary*/
 .btn-secondary {
-    border-color: grey;
-    color: grey;
+    background-color: #6C757D;
+    color: white;
 }
 
-.btn-secondary:hover {
-    background-color: grey;
+.btn-outline-secondary {
+    border-color: #6C757D;
+    color: #6C757D;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6C757D;
     color: white;
 }
 
 /*Success*/
 .btn-success {
-    border-color: green;
-    color: green;
+    background-color: #27A745;
+    color: white;
 }
 
-.btn-success:hover {
-    background-color: green;
+.btn-outline-success {
+    border-color: #27A745;
+    color: #27A745;
+}
+
+.btn-outline-success:hover {
+    background-color: #27A745;
     color: white;
 }
 
 /*Danger*/
 .btn-danger {
-    border-color: red;
-    color: red;
+    background-color: #DC3545;
+    color: white;
 }
 
-.btn-danger:hover {
-    background-color: red;
+.btn-outline-danger {
+    border-color: #DC3545;
+    color: #DC3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #DC3545;
     color: white;
 }
 
 /*Warning*/
 .btn-warning {
-    border-color: orange;
-    color: orange;
+    background-color: #FEC105;
+    color: black;
 }
 
-.btn-warning:hover {
-    background-color: orange;
-    color: white;
+.btn-outline-warning {
+    border-color: #FEC105;
+    color: #FEC105;
+}
+
+.btn-outline-warning:hover {
+    background-color: #FEC105;
+    color: black;
 }
 
 /*Info*/
 .btn-info {
-    border-color: teal;
+    background-color: #18A2B8;
+    color: white;
+}
+
+.btn-outline-info {
+    border-color: #18A2B8;
     color: teal
 }
 
-.btn-info:hover {
-    background-color: teal;
+.btn-outline-info:hover {
+    background-color: #18A2B8;
     color: white;
 }
 
 /*Light*/
 .btn-light {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.btn-outline-light {
     border-color: whitesmoke;
     color: whitesmoke;
 }
 
-.btn-light:hover {
+.btn-outline-light:hover {
     background-color: ghostwhite;
     color: black;
 }
 
 /*Dark*/
 .btn-dark {
+    background-color: black;
+    color: white;
+}
+
+.btn-outline-dark {
     border-color: black;
     color: black;
 }
 
-.btn-dark:hover {
+.btn-outline-dark:hover {
     background-color: black;
     color: white;
+}
+
+.btn-lg {
+    font-size: larger;
+}
+
+.btn-sm {
+    font-size: small;
 }
