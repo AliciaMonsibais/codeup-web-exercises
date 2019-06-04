@@ -1,0 +1,65 @@
+.star-five {
+    position: absolute;
+    display: block;
+    color: white;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid white;
+    border-left: 100px solid transparent;
+    transform: rotate(35deg) scale(.5);
+    margin-top: 110px;
+    margin-left: -35px;
+}
+
+.star-five:after {
+    position: absolute;
+    display: block;
+    color: white;
+    top: 3px;
+    left: -105px;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid white;
+    border-left: 100px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
+}
+
+.star-five:before {
+    border-bottom: 80px solid white;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -45px;
+    left: -65px;
+    display: block;
+    content: '';
+    transform: rotate(-35deg);
+}
+.flag-side {
+    height: 300px;
+    width: 125px;
+    background-color: #032868;
+    float: left;
+}
+.flag-top {
+    height: 150px;
+    width: 300px;
+    background-color: #FFFFFF;
+    float: left;
+    margin-left: 0px;
+    border-top: solid 1px lightgrey;
+    border-right: solid 1px lightgrey;
+}
+
+.flag-bottom {
+    height: 150px;
+    width: 300px;
+    background-color: #BF0A30;
+    float: left;
+    margin: 150px 0 0px -301px;
+}
