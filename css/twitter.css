@@ -23,9 +23,18 @@ header {
     padding-top: 275px;
 }
 a {
-    color: #3B94D;
+    color: #3B94D9;
 }
 
+.container {
+    padding: 2em;
+}
+
+.nav-link {
+    color: #848487;
+    font-weight: bold;
+    text-decoration: none;
+}
 .nav-item {
     display: inline-block;
     padding: 1.5em;
@@ -36,61 +45,71 @@ a {
     width: 100%;
     z-index: 1000;
 }
+
 .nav {
     list-style-type: none;
     margin: 0;
 }
 
-.nav-link {
-    color: #848487;
-    font-weight: bold;
-    text-decoration: none;
-}
 .nav-link:hover {
     color: #3B94D9;
-}
-.profile-image {
-    position: absolute;
-    top: 250px;
 }
 
 .profile {
     background: #FFF;
     height: 80px;
-    line-height: 80px;
 }
+
+.profile-image {
+    position: absolute;
+    top: 250px;
+}
+
 .profile-form {
     float: right;
+    line-height: 80px;
 }
 
-.container {
-    padding: 2em;
+.profile-items {
+    list-style: none;
+    padding: 0;
 }
 
-.profile-details {
+.profile-entry {
+    margin: .5em;
+}
+
+.profile-details, .timeline, .who-to-follow {
     float: left;
-    width: 25%;
     margin: 0 .5em;
+}
+
+.profile-details, .who-to-follow {
+    width: calc(25% - 1em);
 }
 
 .timeline {
-    float: left;
-    width: 50%;
-    margin: 0 .5em;
+    width: calc(50% - 1em);
 }
-
-.who-to-follow {
-    float: right;
-    width: 25%;
-}
-
 .media {
     width: 100%;
     background-color: #FFF;
-    border-bottom: 1px #DDD;
+    border-bottom: 1px solid #DDD;
     padding: .5em;
     overflow: auto;
 }
+
+.media-image {
+    width: 50px;
+    margin-top: 1.33em;
+    float: left;
+}
+
+.media-body {
+    float: left;
+    width: calc(100% - 50px);
+}
+
 .btn {
     border: 1px solid #848487;
     color: #848487;
@@ -98,26 +117,6 @@ a {
     font-weight: bold;
     padding: 8px;
     border-radius: 5px;
-}
-
-.media-image {
-    width: 50px;
-    margin-top: 1.33em;
-    float: none;
-}
-
-.media-body {
-    float: inside;
-    width: 100%;
-}
-
-.profile-items {
-    list-style-type: none;
-    padding: 0;
-}
-
-.profile-entry {
-    margin: .5em;
 }
 
 .btn-large {
