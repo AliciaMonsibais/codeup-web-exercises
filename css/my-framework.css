@@ -143,3 +143,12 @@
 .btn-sm {
     font-size: small;
 }
+
+.btn-block {
+    width: 100%
+}
+
+.active {
+    background-color: #0D62CC;
+    color: white;
+}
