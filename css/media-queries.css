@@ -1,0 +1,114 @@
+/* screen sizes 500px and up */
+@media screen and (min-width:200px) and (max-width: 991px) {
+    body {
+        font-family: Arial;
+        background-color: #ffffff;
+        margin: 15px;
+    }
+    a:link {
+        text-decoration: none;
+        color: black;
+    }
+    h1 {
+        text-align: center;
+        /*width: 80%;*/
+    }
+    li {
+        /*width: 90%;*/
+        background-color: lightgray;
+        margin: .5em auto;
+        padding: 1em;
+    }
+    .alert-info {
+        /*width: 90%;*/
+        border: 1px solid gray;
+        background-color: #ceffff;
+        padding: 1em;
+        text-align: center;
+        margin: 1em auto;
+    }
+    .nav-links {
+        color: blue;
+        text-decoration: underline;
+        list-style: none;
+        text-align: center;
+        /*width: 100%;*/
+        padding: 0;
+    }
+    .header-img {
+        /*width: 30%;*/
+    }
+    img {
+    /*max-width: 333px;*/
+    }
+
+    .social-links {
+        /*width: 10%;*/
+    }
+
+}
+
+/* screen sizes between 960px and 1200px */
+@media screen and (min-width:992px) {
+    /* ... */
+    body {
+        font-family: Arial;
+    }
+
+    h1 {
+        float: left;
+    }
+    /*ul {
+        padding: 0;
+        transform: rotate(180deg);
+    }
+
+    ul li {
+        transform: rotate(180deg);
+    }*/
+
+    li {
+        display: inline-block;
+        padding: 1em;
+        float: right;
+    }
+    img {
+        /*width: 100%;*/
+    }
+
+    footer {
+        clear: both;
+        display: block;
+    }
+
+    .header-img {
+        clear: both;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hidden-on-desktop {
+        display: none;
+    }
+
+    .main {
+        float: left;
+        /*width: 55%;*/
+        padding: .5em;
+    }
+
+    .sub-section {
+        float: right;
+        /*width: 40%;*/
+        padding: .5em;
+        font-style: italic;
+    }
+
+    .social-links {
+        width: 50px;
+        height: auto;
+        display: inline;
+    }
+
+}

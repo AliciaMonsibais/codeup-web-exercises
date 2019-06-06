@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+.container {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
 .row {
     width: 100%
 }
@@ -15,31 +21,56 @@
 .column {
     float: left;
     padding: 10px;
-    border: 1px solid black;
-    margin: 1em 0;
+    /*border: 1px solid black;*/
 }
 
-.column.one-third {
-    width: 33.33%;
-    background: mistyrose;
-}
-
-.column.one-half {
+.row .one-half {
     width: 50%;
-    background: lavender;
+    /*background: lavender;*/
 }
 
-.column.one-fourth {
+.row .one-third {
+    width: calc(100% / 3);
+    /*background: mistyrose;*/
+}
+
+.row .one-fourth {
     width: 25%;
-    background: lightsteelblue;
+    /*background: lightsteelblue;*/
 }
 
-.column.one-sixth {
-    width: 16.66%;
-    background: paleturquoise;
+.row .one-sixth {
+    width: calc(100% / 6);
+    /*background: paleturquoise;*/
 }
 
-.column.one-eighth {
-    width: 12.5%;
-    background: palevioletred;
+.row .one-eighth {
+    width: calc(100% / 8);
+    /*background: palevioletred;*/
+}
+
+@media screen and (min-width: 1px) and (max-width: 991px) {
+    .container {
+        width: 100%;
+    }
+
+    .row .one-half {
+        width: 100%;
+    }
+
+    .row .one-third {
+        width: 100%;
+    }
+
+    .row .one-fourth {
+        width: 100%;
+    }
+
+    .row .one-sixth {
+        width: 50%;
+    }
+
+    .row .one-eighth {
+        width: 25%;
+    }
 }
