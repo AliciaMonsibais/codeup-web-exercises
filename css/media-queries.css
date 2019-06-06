@@ -38,6 +38,7 @@
     .header-img {
         /*width: 30%;*/
     }
+
     img {
     /*max-width: 333px;*/
     }
@@ -106,7 +107,7 @@
     }
 
     .social-links {
-        width: 50px;
+        /*width: 50px;*/
         height: auto;
         display: inline;
     }
