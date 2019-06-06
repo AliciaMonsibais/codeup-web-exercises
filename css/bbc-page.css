@@ -29,6 +29,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h2 {
+    padding-left: 1em;
+}
+
 a {
     color: white;
 }
@@ -40,7 +44,7 @@ footer {
     width: 100%;
 }
 
-.logo {
+.nav-logo {
     width: 7%;
     height: 7%;
     float: left;
@@ -103,13 +107,15 @@ footer {
 }
 
 .error404 {
-    padding: 3em;
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
 
 .error404-box {
     border: 1px solid lightgrey;
     background: #E0E0E0;
-    padding: 2em;
+    padding-bottom: 2em;
+    padding-top: 2em;
     width: 100%;
 }
 
@@ -118,6 +124,8 @@ footer {
     height: 278px;
     background: url(../img/bbc-background.jpg);
     padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .img-error {
@@ -131,20 +139,31 @@ footer {
 .left-footer {
     float: left;
     font-size: 13px;
+    width: 33%;
+    padding: 1.5em;
 }
 
-.column1, .column2 {
-    font-size: 13px;
+.footer-logo {
+    width: 25%;
+    height: auto;
+}
+
+.right-footer {
     width: 50%;
-    list-style: none;
-    padding: .5em;
-}
-
-column {
     float: right;
+    font-size: 13px;
 }
 
 .right-footer:after {
     content: "";
     clear: both;
+}
+
+.column {
+    padding: 10px;
+}
+
+.column1, .column2 {
+    text-decoration: none;
+    list-style: none;
 }
