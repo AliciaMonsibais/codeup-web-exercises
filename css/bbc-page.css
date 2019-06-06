@@ -8,9 +8,7 @@ header {
     color: white;
     font-weight: bold;
     width: 100%;
-    height: 50px;
-    margin: 0;
-    padding: 0;
+    padding: 0 16px;
     float: left;
 }
 
@@ -130,6 +128,10 @@ footer {
 
 .img-error {
     float: right
+}
+
+.error-text {
+    font-size: 15px;
 }
 
 .footer-link {
