@@ -4,31 +4,39 @@ console.log('Hello from external Javascript!');
 
 alert("Welcome to my website!");
 
-var userInput = prompt('What is your favorite color?');
-console.log("The user's favorite color is " + userInput);
-if (userInput === "yellow" || userInput === "Yellow") {
+var userColor = prompt('What is your favorite color?');
+console.log("The user's favorite color is " + userColor);
+if (userColor === "yellow" || userColor === "Yellow") {
     alert("Yellow? Gross!");
-} else if (userInput === "purple" || userInput === "Purple") {
+} else if (userColor === "purple" || userColor === "Purple") {
     alert ("Purple? How noble of you.");
-} else if (userInput === "blue" || userInput === "Blue") {
-    alert ("I'm sorry to tell you only lame people like blue.")
-}else {
-    alert("Great, " + userInput + " is my favorite color too!");
+} else if (userColor === "blue" || userColor === "Blue") {
+    alert ("I'm sorry to tell you only lame people like blue.");
+} else if (userColor === "grey" || userColor === "Grey" || userColor === "gray" || userColor === "Gray") {
+    alert (userColor + "-t!")
+}
+else {
+    alert("Great, " + userColor + " is my favorite color too!");
 }
 
 //exercise #3
 
-//movie rental
+//movie rental exercise
 
-var mermaid = prompt("How many days will you rent The Little Mermaid?");
+var mermaid = Number(prompt("How many days will you rent The Little Mermaid?"));
 console.log("The user will rent the Little Mermaid for " + mermaid + " days.");
-var bear = prompt("How many days will you rent Brother Bear?");
+var bear = Number(prompt("How many days will you rent Brother Bear?"));
 console.log("The user will rent Brother Bear for " + bear + " days.");
-var hercules = prompt("How many days will you rent Hercules?");
+var hercules = Number(prompt("How many days will you rent Hercules?"));
 console.log("The user will rent Hercules for " + hercules + " days.");
-var movieTotal = alert("Your total will be $" + ((mermaid * 3) + (bear * 3) + (hercules * 3)));
+var movieTotal = (mermaid + bear + hercules) * 3;
+    alert("Your total will be $" + movieTotal + ".");
 
-//pay rate
+//pay rate exercise
+
+var google = 400;
+var amazon = 380;
+var facebook = 350;
 
 var response = confirm("I hear you're a contractor for different companies.");
     if (response) {
@@ -36,38 +44,24 @@ var response = confirm("I hear you're a contractor for different companies.");
     } else {
         alert("Too bad. You're a contractor for this activity.");
     }
-var google = prompt("How much does Google pay per hour?");
-console.log("The user makes " + google + " per hour with Google.");
 var googleHours = prompt("How many hours did you work for Google this week?");
-var amazon = prompt("How much does Amazon pay per hour?");
-console.log("The user makes " + amazon + " per hour with Amazon.");
 var amazonHours = prompt("How many hours did you work for Amazon this week?");
-var facebook = prompt("How much does Facebook pay per hour?");
-console.log("The user makes " + facebook + " per hour with Facebook.");
-var facebookHours = prompt("How many hours did you work for Facebook this week?")
-var contractTotal = alert("You will make $" + ((google * googleHours) + (amazon * amazonHours) + (facebook * facebookHours)) + " this week.");
+var facebookHours = prompt("How many hours did you work for Facebook this week?");
+var contractTotal = (google * googleHours) + (amazon * amazonHours) + (facebook * facebookHours);
+    alert("You will make $" + contractTotal + " this week.");
 
-//class
+//class exercise
 
-var studentTime = prompt("What time are you looking for this class to be available?");
-if (studentTime === "11:30") {
-    alert("Fantastic! There's a class available at that time.");
-} else if (studentTime === "1337" || studentTime === "13:37") {
-    alert("Leet!");
-} else {
-    alert(studentTime + " isn't available for your desired course. Shucks.");
-}
+var classTime = prompt("What time is the class?");
+var noTimeConflict = !confirm("Does the student have a class at " + classTime + "?");
+var maxClassSize = Number(prompt("What's the maximum class size?"));
+var studentsEnrolled = Number(prompt("How many students are currently enrolled?"));
+    alert("Student can enroll in class: " + (noTimeConflict && (studentsEnrolled < maxClassSize)))
 
-//product offer
 
-var premium = confirm("Are you a member of our super awesome program?");
-    if (premium) {
-        alert("Fantastic! Enjoy this nifty item with no purchase necessary!");
-    } else {{
-       var numberOfItems= prompt("You can receive a promo item! But first, how many items have you bought?");
-    }
-    if (numberOfItems > 2) {
-        alert("Great! Enjoy this promo item.");
-    } else {
-        alert("Please purchase 2 or more items to receive this super cool promo item.");
-    }}
+//product offer exercise
+
+var premiumMember = confirm("Are you a premium member of our super awesome program?");
+    var numberOfItems = Number(prompt("How many items did the customer buy?"));
+    var offerValid = confirm("Is the coupon still good?");
+    alert("Customer coupon valid: " + (offerValid && (premiumMember || numberOfItems >= 2)));
