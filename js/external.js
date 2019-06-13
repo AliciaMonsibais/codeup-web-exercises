@@ -6,10 +6,14 @@ alert("Welcome to my website!");
 
 var userInput = prompt('What is your favorite color?');
 console.log("The user's favorite color is " + userInput);
-if (userInput === "yellow", "Yellow") {
-    confirm("Yellow? Um... okay.");
-} else {
-    confirm("Great, " + userInput + " is my favorite color too!");
+if (userInput === "yellow" || userInput === "Yellow") {
+    alert("Yellow? Gross!");
+} else if (userInput === "purple" || userInput === "Purple") {
+    alert ("Purple? How noble of you.");
+} else if (userInput === "blue" || userInput === "Blue") {
+    alert ("I'm sorry to tell you only lame people like blue.")
+}else {
+    alert("Great, " + userInput + " is my favorite color too!");
 }
 
 //exercise #3
@@ -22,7 +26,7 @@ var bear = prompt("How many days will you rent Brother Bear?");
 console.log("The user will rent Brother Bear for " + bear + " days.");
 var hercules = prompt("How many days will you rent Hercules?");
 console.log("The user will rent Hercules for " + hercules + " days.");
-var movieTotal = confirm("Your total will be $" + ((mermaid * 3) + (bear * 3) + (hercules * 3)));
+var movieTotal = alert("Your total will be $" + ((mermaid * 3) + (bear * 3) + (hercules * 3)));
 
 //pay rate
 
@@ -41,16 +45,14 @@ var amazonHours = prompt("How many hours did you work for Amazon this week?");
 var facebook = prompt("How much does Facebook pay per hour?");
 console.log("The user makes " + facebook + " per hour with Facebook.");
 var facebookHours = prompt("How many hours did you work for Facebook this week?")
-var contractTotal = confirm("You will make $" + ((google * googleHours) + (amazon * amazonHours) + (facebook * facebookHours)) + " this week.");
+var contractTotal = alert("You will make $" + ((google * googleHours) + (amazon * amazonHours) + (facebook * facebookHours)) + " this week.");
 
 //class
 
 var studentTime = prompt("What time are you looking for this class to be available?");
 if (studentTime === "11:30") {
     alert("Fantastic! There's a class available at that time.");
-} else if (studentTime === "1337") {
-    alert("Leet!");
-} else if (studentTime === "13:37") {
+} else if (studentTime === "1337" || studentTime === "13:37") {
     alert("Leet!");
 } else {
     alert(studentTime + " isn't available for your desired course. Shucks.");
