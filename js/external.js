@@ -57,11 +57,11 @@ if (studentTime === "11:30") {
 var premium = confirm("Are you a member of our super awesome program?");
     if (premium) {
         alert("Fantastic! Enjoy this nifty item with no purchase necessary!");
-    } else {
+    } else {{
        var numberOfItems= prompt("You can receive a promo item! But first, how many items have you bought?");
     }
     if (numberOfItems > 2) {
         alert("Great! Enjoy this promo item.");
     } else {
         alert("Please purchase 2 or more items to receive this super cool promo item.");
-    }
+    }}
