@@ -114,4 +114,4 @@ function applyDiscount(i,d) {
     return i - (i*d);
 }
 
-console.log("Your total is: $" + (applyDiscount(initialPrice, discountValue)) + ".";
+console.log("Your total is: $" + (applyDiscount(initialPrice, discountValue)) + ".");

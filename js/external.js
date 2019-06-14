@@ -50,13 +50,13 @@ var facebookHours = prompt("How many hours did you work for Facebook this week?"
 var contractTotal = (google * googleHours) + (amazon * amazonHours) + (facebook * facebookHours);
     alert("You will make $" + contractTotal + " this week.");
 
-class exercise
+//class exercise
 
 var classTime = prompt("What time is the class?");
 var noTimeConflict = !confirm("Does the student have a class at " + classTime + "?");
 var maxClassSize = Number(prompt("What's the maximum class size?"));
 var studentsEnrolled = Number(prompt("How many students are currently enrolled?"));
-    alert("Student can enroll in class: " + (noTimeConflict && (studentsEnrolled < maxClassSize)))
+    alert("Student can enroll in class: " + (noTimeConflict && (studentsEnrolled < maxClassSize)));
 
 
 //product offer exercise
