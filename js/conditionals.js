@@ -19,20 +19,19 @@
 var enterNumber = confirm("Would you like to enter a number?");
 if (enterNumber === true) {
     var whatNumber = Number(prompt("Please enter a number."));
-    if (isNaN(whatNumber) === false) {
-        alert ((whatNumber % 2 === 0) ? whatNumber + " is an odd number!" : whatNumber + " is an even number!");
+    if (isNaN(whatNumber) === false) /*this is for a correct number entry*/ {
+        alert ((whatNumber % 2 === 0) ? whatNumber + " is an even number!" : whatNumber + " is an odd number!");
         alert(whatNumber + " + 100 = " + (whatNumber + 100));
         if (whatNumber < 0) {
         alert("The number " + whatNumber + " is a negative number.");
         } else {
         alert("The number " + whatNumber + " is a positive number.");
+        }}
+        else {
+            alert("Hey, I said enter a number. ಠ_ಠ");
         }
-        // else {
-        //     alert("Please enter a valid number.");
-        // }
     } else {
-        alert("Fine, don't have any fun.");
-    }
+        alert("Fine, don't have any fun. (╯°□°)╯︵ ┻━┻  (You see that? That's you NOT having fun.)");
 }
 
 
@@ -95,17 +94,17 @@ console.log(analyzeColor("red"));
 function analyzeColor(color) {
     color=color.toLowerCase();
     switch (color){
-        case red:
-            message = "Strawberries are red";
+        case "red":
+            alert("Strawberries are red");
             break;
         case "blue":
-            message =  "blue is the color of the sky";
+            alert("blue is the color of the sky");
             break;
         case "cyan":
-            message = "I don't know anything about that color."
+            alert("I don't know anything about that color.");
             break;
         default:
-            message =  color+" sure is a color.";
+            alert(color+" sure is a color.");
             break;
     }
     return message;
@@ -120,37 +119,37 @@ console.log(analyzeColor(randomColor));
  * function to show it to the user.
  */
 
-console.log(randomColor);
-
-var analyzeColor = prompt("What is your favorite color?");
-switch(randomColor) {
-    case "red":
-        alert("Red is my favorite color.");
-        break;
-    case "orange":
-        alert("Oranges are orange.");
-        break;
-    case "yellow":
-        alert("Yellow is terrible. You should feel bad if you like it.");
-        break;
-    case "green":
-        alert("Grass is green.");
-        break;
-    case "blue":
-        alert("The sky is blue.");
-        break;
-    case "indigo":
-        alert("Is indigo even a color?");
-        break;
-    case "violet":
-        alert("Violet, you're turning violet!");
-    default:
-        alert("I don't know that color. Try again.");
-        break;
-}
-
-var userColor = prompt("Please enter a color.")
-alert(analyzezColorSwitch(userColor));
+// console.log(randomColor);
+//
+// var analyzeColor = prompt("What is your favorite color?");
+// switch(randomColor) {
+//     case "red":
+//         alert("Red is my favorite color.");
+//         break;
+//     case "orange":
+//         alert("Oranges are orange.");
+//         break;
+//     case "yellow":
+//         alert("Yellow is terrible. You should feel bad if you like it.");
+//         break;
+//     case "green":
+//         alert("Grass is green.");
+//         break;
+//     case "blue":
+//         alert("The sky is blue.");
+//         break;
+//     case "indigo":
+//         alert("Is indigo even a color?");
+//         break;
+//     case "violet":
+//         alert("Violet, you're turning violet!");
+//     default:
+//         alert("I don't know that color. Try again.");
+//         break;
+// }
+//
+// var userColor = prompt("Please enter a color.")
+// alert(analyzezColorSwitch(userColor));
 
 /**
  * TODO:
