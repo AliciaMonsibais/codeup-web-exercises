@@ -53,22 +53,22 @@ if (enterNumber === true) {
  * console.logging the function's return value
  */
 
-// function analyzeColor(color) {
-//     if (analyzeColor(blue) === true) {
-//         console.log("blue is the color of the sky");
-//     } else if (analyzeColor(red) === true) {
-//         console.log("Strawberries are red");
-//     } else if (analyzeColor(cyan) === true) {
-//         console.log ("I don't know anything about cyan");
-//     } else (analyzeColor())
-//
-// }
+function analyzeColor(color) {
+    if (analyzeColor(blue) === true) {
+        console.log("blue is the color of the sky");
+    } else if (analyzeColor(red) === true) {
+        console.log("Strawberries are red");
+    } else if (analyzeColor(cyan) === true) {
+        console.log ("I don't know anything about cyan");
+    } else (analyzeColor())
+
+}
 
 // Don't change the next two lines!
 // These lines create two variables for you:
-// - `colors`: a list of the colors of the rainbow
-// - `randomColor`: contains a single random color value from the list (this
-//                  will contain a different color everytime the page loads)
+- `colors`: a list of the colors of the rainbow
+- `randomColor`: contains a single random color value from the list (this
+                 will contain a different color everytime the page loads)
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -107,7 +107,6 @@ function analyzeColor(color) {
             alert(color+" sure is a color.");
             break;
     }
-    return message;
 }
 
 console.log(analyzeColor(randomColor));
@@ -119,37 +118,37 @@ console.log(analyzeColor(randomColor));
  * function to show it to the user.
  */
 
-// console.log(randomColor);
-//
-// var analyzeColor = prompt("What is your favorite color?");
-// switch(randomColor) {
-//     case "red":
-//         alert("Red is my favorite color.");
-//         break;
-//     case "orange":
-//         alert("Oranges are orange.");
-//         break;
-//     case "yellow":
-//         alert("Yellow is terrible. You should feel bad if you like it.");
-//         break;
-//     case "green":
-//         alert("Grass is green.");
-//         break;
-//     case "blue":
-//         alert("The sky is blue.");
-//         break;
-//     case "indigo":
-//         alert("Is indigo even a color?");
-//         break;
-//     case "violet":
-//         alert("Violet, you're turning violet!");
-//     default:
-//         alert("I don't know that color. Try again.");
-//         break;
-// }
-//
-// var userColor = prompt("Please enter a color.")
-// alert(analyzezColorSwitch(userColor));
+console.log(randomColor);
+
+var analyzeColor = prompt("What is your favorite color?");
+switch(randomColor) {
+    case "red":
+        alert("Red is my favorite color.");
+        break;
+    case "orange":
+        alert("Oranges are orange.");
+        break;
+    case "yellow":
+        alert("Yellow is terrible. You should feel bad if you like it.");
+        break;
+    case "green":
+        alert("Grass is green.");
+        break;
+    case "blue":
+        alert("The sky is blue.");
+        break;
+    case "indigo":
+        alert("Is indigo even a color?");
+        break;
+    case "violet":
+        alert("Violet, you're turning violet!");
+    default:
+        alert("I don't know that color. Try again.");
+        break;
+}
+
+var userColor = prompt("Please enter a color.")
+alert(analyzezColorSwitch(userColor));
 
 /**
  * TODO:
@@ -170,8 +169,6 @@ console.log(analyzeColor(randomColor));
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
-var initialTotal = Number(prompt("How much is your total bill?"));
-var luckNum = Number(prompt("What is your lucky number?"));
 
 function calculateTotal(luckNum,initialTotal) {
     switch (luckNum){
@@ -190,7 +187,9 @@ function calculateTotal(luckNum,initialTotal) {
     }
 }
 
-alert("Your new total is $" + calculateTotal(luckNum, initialTotal));
+console.log(calculateTotal(0, 100));
+console.log(calculateTotal(4, 100));
+console.log(calculateTotal(5, 100));
 
 /**
  * TODO:
@@ -202,6 +201,10 @@ alert("Your new total is $" + calculateTotal(luckNum, initialTotal));
 // Generate a random number between 0 and 6
 var luckyNumber = Math.floor(Math.random() * 6);
 
-var userTotal = Number(prompt("What was your total today?"));
-
-alert("Your total is " + userTotal + ". Your lucky number was " + luckyNumber + " meaning you pay " + calculateTotal(luckyNumber, userTotal));
+var userTotal = Number(prompt("What was your total today?")); {
+    if (isNaN(userTotal) === false) {
+        alert("Your total is $" + userTotal.toFixed(2) + ". Your lucky number was " + luckyNumber + " meaning you pay $" + calculateTotal(luckyNumber, userTotal).toFixed(2) + ("."));
+    } else {
+        alert("That's not a number, dummy. ಠ_ಠ");
+    }
+}
