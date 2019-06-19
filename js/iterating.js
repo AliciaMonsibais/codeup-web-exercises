@@ -20,6 +20,10 @@
      * Create log statements that will print each of the names individually by
      * accessing each element's index.
     //  */
+    console.log(names[0]);
+    console.log(names[1]);
+    console.log(names[2]);
+    console.log(names[3]);
     // For loop://
     //
     // for (var i = 0; i < names.length; i++) {
@@ -28,8 +32,8 @@
 
     //ForEach loop//
 
-    names.forEach(function (name) {
-        console.log("Here is a name: " + name);
+    names.forEach(function (name, index) {
+        console.log("The name at index " + index + " is " + name + ".");
 
     });
 
@@ -45,6 +49,7 @@
      */
 
     /**
+     *
      * TODO:
      * Create the following three functions, each will accept an array and
      * return an an element from it
@@ -57,13 +62,28 @@
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
-    var coolArray = [1, 2, 3, 4, 5];
-    console.log("I have " + coolArray.length + " elements in my super cool Array!");
-    var first = coolArray[0];
-    console.log("Here is the first array item: " + first);
-    var second = coolArray[1];
-    console.log("Here is the second array item: " + second);
-    var last = coolArray[4];
-    console.log("Here is the last array item: " + last);
+
+    function first(array) {
+        return array[0];
+    }
+    function second(array) {
+        return array[1];
+    }
+    function last(array) {
+        return array [array.length - 1];
+    }
+
+    console.log(first(names));
+    console.log(second(names));
+    console.log(last(names));
+
+    // var coolArray = [1, 2, 3, 4, 5];
+    // console.log("I have " + coolArray.length + " elements in my super cool Array!");
+    // var first = coolArray[0];
+    // console.log("Here is the first array item: " + first);
+    // var second = coolArray[1];
+    // console.log("Here is the second array item: " + second);
+    // var last = coolArray[4];
+    // console.log("Here is the last array item: " + last);
 
 })();
