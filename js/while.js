@@ -13,7 +13,7 @@
 
 (function(){
     var moreCones = true;
-    var cones = (Math.floor(Math.random() * 100) + 50);
+    var cones = (Math.floor(Math.random() * 50) + 50);
     console.log("You need to sell " + cones + " cones.");
     function gimme() {
         var gimmeMore = Math.floor((Math.random() * 5) + 1);
@@ -22,9 +22,11 @@
     do {
         gimme();
         console.log("You have " + cones + " cones.");
-        if (cones === 0){
+        if (cones <= 0){
         moreCones =  false;
         console.log("You're sold out! Go home.")
         }
     } while(moreCones);
 })();
+
+
