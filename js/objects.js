@@ -11,17 +11,17 @@
      *  > console.log(person.firstName) // "Rick"
      *  > console.log(person.lastName) // "Sanchez"
      */
-    // var person = {
-    //     //     firstName: "Alicia",
-    //     //     lastName: "Monsibais"
-    //     // };
-    //     // person.sayHello = function() {
-    //     //     console.log("Hello from " + person.firstName + " " + person.lastName + "!")
-    //     // };
-    //     //
-    //     // console.log(person.firstName);
-    //     // console.log(person.lastName);
-    //     // console.log(person.sayHello());
+    var person = {
+            firstName: "Alicia",
+            lastName: "Monsibais"
+        };
+        person.sayHello = function() {
+            console.log("Hello from " + this.firstName + " " + this.lastName + "!")
+        };
+
+        console.log(person.firstName);
+        console.log(person.lastName);
+        console.log(person.sayHello());
 
 
     /**
@@ -48,32 +48,63 @@
      * represents one shopper. Use a foreach loop to iterate through the array,
      * and console.log the relevant messages for each person
      */
-    // function applyDiscount() {
-    //     if (shoppers.amount >= 200) {
+
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+        ];
+
+    //create a function to calculate the discount to use this in the foreach loop
+    function calculateDiscount(total){
+        var output = 0;
+        if (total > 200){
+            output = total * .12;
+        }
+        return output;
+    }
+
+    //create a function to convert number to currency
+    function convertToCurrency(num){
+        return "$" + num.toFixed(2);
+    }
+
+    //display individual info for each shopper
+    function displayShopperInfo(shopper){
+        //default string
+        var output = "";
+        //var stores total amount
+        var amount = convertToCurrency(shopper.amount);
+        //var stores discount to be applied
+        var discount = convertToCurrency(calculateDiscount(shopper.amount));
+        //var stores final total
+        var finalAmount = convertToCurrency(shopper.amount - calculateDiscount(shopper.amount));
+        //concatenate onto empty string
+        output += shopper.name + " spent " + amount;
+        output += " and received a discount of " + discount;
+        output += " and paid " + finalAmount;
+        //return final string
+        return output;
+    }
+    //display info for all shoppers. This is a higher order function which is a function that calls another function.
+    function displayShoppersInfo(shoppers){
+        shoppers.forEach(function(shopper){
+            console.log(displayShopperInfo(shopper));
+        });
+    }
+
+    displayShoppersInfo(shoppers);
+
+
+    // var applyDiscount = function () {
+    //     if (shoppers.amount >= 200){
     //         console.log(shoppers.name + "gets a 12% discount with a new total of $" + shoppers.amount * .88 + "!");
     //     } else {
     //         console.log(shoppers.name + " did not purchase enough items to qualify for this discount.");
     //     }
-    // }
-    // var shoppers = [
-    //     {
-    //         name: 'Cameron',
-    //         amount: 180,
-    //         discount: applyDiscount()
-    //     },
-    //     {
-    //         name: 'Ryan',
-    //         amount: 250,
-    //         discount: applyDiscount()
-    //     },
-    //     {
-    //         name: 'George',
-    //         amount: 320,
-    //         discount: applyDiscount()
-    //     }
-    // ];
-    //
+    // };
     // shoppers.forEach(function(shopper){
+    //     console.log(shopper.discount);
     // });
 
     /** TODO:
@@ -91,37 +122,61 @@
     var books = [
         {
             title: "The Wizarding World of Harry Potter",
-            firstName: "J.K.",
-            lastName: "Rowling"
+            author: {
+                firstName: "J.K.",
+                lastName: "Rowling"
+            }
         },
         {
             title: "A Series of Unfortunate Events",
-            firstName: "Lemony",
-            lastName: "Snicket"
+            author: {
+                firstName: "Lemony",
+                lastName: "Snicket"
+            }
         },
         {
             title: "Silence of the Lambs",
-            firstName: "Thomas",
-            lastName: "Harris"
+            author: {
+                firstName: "Thomas",
+                lastName: "Harris"
+            }
         },
         {
             title: "The Shining",
-            firstName: "Stephen",
-            lastName: "King"
+            author: {
+                firstName: "Stephen",
+                lastName: "King"
+            }
         },
         {
             title: "A Song of Ice and Fire",
-            firstName: "George R. R.",
-            lastName: "Martin"
+            author: {
+                firstName: "George R. R.",
+                lastName: "Martin"
+            }
         }
     ];
 
     console.log(books[0].firstName);
     console.log(books[3].title);
 
-    books.forEach(function(book){
-        console.log("Do yourself a favor and read " + books.title + " by " + books.firstName + books.lastName + ("."))
+    // books.forEach(function(book, index){
+    //     console.log("Check out this nifty book: " + "Book # " + Number(index + 1));
+    //     console.log("Title: " + book.title);
+    //     console.log("Author: " + book.author);
+    //     console.log("---------");
+    // });
+
+    books.forEach(function(book, index){
+        var output = "";
+        output += ("Check out this nifty book: " + "Book # " + Number(index + 1)) + "\n";
+        output += ("Title: " + book.title) + "\n";
+        output += "Author: " + book.author.firstName + " " + book.author.lastName + "\n";
+        output += "----------" + "\n";
+        console.log(output);
     });
+
+    // \n is an internal line break
 
     /**
      * TODO:
@@ -158,5 +213,20 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    function createBook(title, firstName, lastName) {
+        var book = {};
+        book.title = title;
+        book.author = {};
+        book.author.firstName = firstName;
+        book.author.lastName = lastName;
+        return book;
+    }
+
+    books.push(createBook("Animal Farm", "George", "Orwell"));
+    console.log(books);
+
+
+
+
 
 })();
