@@ -1,10 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DOM: Query and Modify</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+           #main-header {
+               height: 100px;
+               text-align: center;
+               padding: 20px;
+            }
+           #sub-header{
+               height: 100px;
+               text-align: center;
+               padding: 30px;
+           }
+           .row {
+               padding: 1em;
+           }
+            .circle {
+                border-radius: 50%;
+                box-shadow: 4px 4px 9px black;
+            }
+            .stan {
+                height: 90px;
+                width: 90px;
+                background: blue;
+                position: absolute;
+            }
+            .kyle {
+                height: 90px;
+                width: 90px;
+                background: green;
+                position: absolute;
+            }
+           .kenny {
+               height: 90px;
+               width: 90px;
+               background: orangered;
+               position: absolute;
+           }
+            .cartman {
+                height: 90px;
+                width: 90px;
+                background: red;
+                position: absolute;
+            }
+
+        </style>
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h1 id="main-header">Hello World!</h1>
+        </div>
+        <div class="mx-auto col-8">
+            <div class="circle stan"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <ul>
+            <li data-dbid="1">Item 1</li>
+            <li data-dbid="2">Item 2</li>
+            <li data-dbid="3">Item 3</li>
+            <li data-dbid="4">Item 4</li>
+            <li data-dbid="5">Item 5</li>
+            </ul></div>
+        <div class="mx-auto col-8"><div class="circle kyle"></div></div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h2 id="sub-header">Hello Again.</h2></div>
+        <div class="col-8">
+            <div class="circle kenny"></div></div>
+    </div>
+    <div class="row">
+        <div class="col-2"><div class="circle cartman"></div></div>
+        <div class="col-10"><p class="sub-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+        </p></div>
+    </div>
+<!--<button type="button" id="btn1">Button 1</button>-->
+<!--<button type="button" id="btn2">Button 2</button>-->
+<!--<button type="button" id="btn3">Button 3</button>-->
+<!--<button type="button" id="btn4">Button 4</button>-->
+</div>
 
+
+<script>
+    (function() {
+        "use strict";
+        // TODO: Uncomment next line and get the main header element by id
+        // TODO: Uncomment next line and get the main header element by id
+
+        // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+        var mainHeader = document.getElementById("main-header");
+        function changeMainHeader() {
+            mainHeader.innerHTML = "JavaScript is Cool";
+            document.getElementById("stan").style.backgroundImage = "url('img/stan-dance.gif')";
+        }
+        document.getElementById("main-header").addEventListener("click", changeMainHeader, false);
+
+        // TODO: Uncomment the next line and get the sub header element by id
+        var subHeader = document.getElementById('sub-header');
+        document.getElementById("sub-header").addEventListener("click", function(){
+            subHeader.style.color="blue";
+        }, false);
+
+        // TODO: Set the text color of subHeader to blue
+
+        // TODO: Uncomment the next line and get all list items
+        var listItems = document.getElementsByTagName('li');
+            for(var i = 0; i < listItems.length; i++){
+                var dbid = listItems[i].getAttribute('data-dbid');
+                if(dbid == 1){
+                    listItems[i].style.color = "blue";
+                }else if(dbid % 2 === 0){
+                    listItems[i].style.color ="grey";
+                }
+            }
+
+        // TODO: Set text color on every other list item to grey
+        // TODO: Set text color of li with dbid = 1 to blue
+
+        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+        var subParagraphs = document.getElementsByClassName('sub-paragraph').addEventListener("click", function(){
+            subParagraphs[0].innerHTML = "Mission Accomplished!";
+        }, false);
+
+
+
+        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+    })();
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

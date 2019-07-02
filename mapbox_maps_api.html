@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+    <title>Mapbox Maps API</title>
+</head>
+<body>
+<h1>My Favorite Restaurants</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+
+<!-- Mapbox Geocoder Util Methods -->
+<script src="js/mapbox-utils.js"></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = mapboxtoken;
+    var sanAntonio = geocode("San Antonio, TX", mapboxtoken).then(function(coordinates){
+        var sanAntonio = coordinates;
+        var mapOptions = {
+            center: sanAntonio,
+            zoom: 12,
+            style: 'mapbox://styles/mapbox/streets-v9',
+            container: 'map'
+        };
+        var map = new mapboxgl.Map(mapOptions);
+    });
+
+
+    geocode("La Fonda on Main", mapboxtoken).then(function(laFonda){
+        var marker1 = new mapboxgl
+            .setLngLat(laFonda)
+            .setHTML ("<strong>La Fonda on Main</strong>");
+        var popup1 = new mapboxgl.Popup()
+            .setLngLat(laFonda)
+            .addTo(ourMap)
+            .setPopup(popup1);
+    });
+var restaurants = [
+    {
+        name: "La Fonda on Main",
+        description: "<strong>La Fonda on Main</strong> 🍸\n<p>The oldest Mexican restaurant in San Antonio (est. 1932) that serves excellend Tex-Mex and interior Mexican food for brunch, lunch, and dinner.</p>",
+        coordinates: [-98.494117, 29.452578]
+
+    },
+    {
+        name: "Madhatters Tea House & Cafe",
+        description: "<strong>Madhatters Tea House & Cafe </strong>☕︎\n<p>An unusual cafe with a variety of teas to choose from. Their Our Story section was blank on their website. Sad day.</p>",
+        coordinates: [-98.491211, 29.414278]
+    },
+    {
+        name: "Sawasdee Thai Restaurant",
+        description: "<strong>Sawasdee Thai Restaurant</strong> <p>A go-to place for Thai food.</p>",
+        coordinates: [-98.507412, 29.514305]
+    }
+];
+restaurants.forEach(function(item){
+    geocode.(item.name, mapboxtoken).then(function)
+})
+
+//     //create marker for La Fonda
+//     var laFondaMarker = new mapboxgl.Marker()
+//         .setLngLat([-98.494117, 29.452578])
+//         .addTo(map);
+//
+//     //create popup for La Fonda
+//     var laFondaPopup = new mapboxgl.Popup()
+//         .setLngLat([-98.494117, 29.452578])
+//         .setHTML("La Fonda on Main🍸\n")
+//         .addTo(map);
+//         laFondaMarker.setPopup(laFondaPopup);
+//
+//     //create marker for Mad Hatters
+//     var madHattersMarker= new mapboxgl.Marker()
+//         .setLngLat([-98.491211, 29.414278])
+//         .addTo(map);
+//     //create popup for Mad Hatters
+//     var madHattersPopup = new mapboxgl.Popup()
+//         .setLngLat([-98.491211, 29.414278])
+//         .setHTML("Madhatters Tea House & Cafe ☕︎\n")
+//         .addTo(map);
+//     madHattersMarker.setPopup(madHattersPopup);
+//
+//     //create marker for Sawasdee
+//     var sawasdeeMarker= new mapboxgl.Marker()
+//         .setLngLat([-98.507412, 29.514305])
+//         .addTo(map);
+//
+//     //create popup for Sawasdee
+//     var sawasdeePopup = new mapboxgl.Popup()
+//         .setLngLat([-98.507412, 29.514305])
+//         .setHTML("Sawasdee Thai Cuisine")
+//         .addTo(map);
+//     sawasdeeMarker.setPopup(sawasdeePopup);
+//
+//     restaurants.forEach(function(restaurant, index){
+//         var marker =  new mapboxgl.Marker()
+//             .setLngLat([Number(restaurants.longLat)])
+//             .addTo(map);
+//         var popup = new mapboxgl.Popup()
+//             .setLngLat([Number(restaurants.longLat)])
+//             .setHTML(restaurants.description)
+//             .addTo(map);
+//         marker.setPopup(popup)
+//     })
+//     var marker = new mapboxgl.Marker()
+//         .setLngLat(longLat)
+//         .addTo(map);
+//     map.on('click', 'restaurants', function() {
+//         var longLat = restaurants.longLat;
+//         var description = restaurants.description;
+//
+//         new mapboxgl.Popup()
+//             .setLngLat(longLat)
+//             .setHTML(description)
+//             .addTo(map);
+//         marker.setPopup(popup)
+//     });
+
+</script>
+</body>
+</html>

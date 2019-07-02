@@ -45,3 +45,21 @@
     planets.sort();
     console.log(planets);
 })();
+
+function addWithSurcharge(a, b){
+    var arr = [a,b];
+    var aggregator = 0;
+    //establishing that aggregator is a number
+    arr.forEach(function(num){
+        aggregator += num;
+        if ( num > 20) {
+            aggregator += 3
+        } else if (aggregator <= 20 && aggregator > 10){
+            aggregator += 2
+        } else {
+            aggregator += 1;
+        }
+    });
+    return aggregator;
+}
+

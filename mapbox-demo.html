@@ -17,6 +17,7 @@
 <body>
 
 <h1>My First Mapbox Map!</h1>
+<button id="button">Zoom</button>
 
 <!-- The HTML element that serves as the Mapbox container -->
 <div id='map'></div>
@@ -24,6 +25,7 @@
 <!-- Mapbox JS -->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="js/keys.js"></script>
+<script src="js/mapbox-utils.js"></script>
 
 <!-- Custom JS -->
 <script>
@@ -37,10 +39,16 @@
     var marker = new mapboxgl.Marker()
         .setLngLat([-98.4861, 29.4260])
         .addTo(map);
-    var popup = new mapboxgl.Popup()
-        .setLngLat([-98.489615, 29.426827])
-        .setHTML("<p>Codeup Rocks!</p>")
+    var alamoPopup = new mapboxgl.Popup()
+        .setHTML("<p>Remember The Alamo!</p>")
         .addTo(map)
+
+    marker.setPopup(alamoPopup)
+    // var popup = new mapboxgl.Popup()
+    //     .setLngLat([-98.489615, 29.426827])
+    //     .setHTML("<p>Codeup Rocks!</p>")
+    //     .addTo(map)
+
 </script>
 </body>
 </html>
