@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Press Start 2P', cursive;
+        }
+    </style>
+</head>
+<body>
+<h1>Konami Code</h1>
+<div id = "cheats"></div>
+
+<script src="js/jquery-2.x-git.js"></script>
+<script>
+    "use strict";
+
+    $(document).keydown(function(e) {
+        var keySelection = e.originalEvent.code;
+        switch (keySelection){
+            case "Enter":
+                e.preventDefault();
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-Start.svg\" alt=\"start button\">");
+                break;
+            case "KeyA":
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-A.svg\" alt=\"A button\">");
+                break;
+            case "KeyB":
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-B.svg\" alt=\"B button\">");
+                break;
+            case "ArrowUp":
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-D-Pad-U.svg\" alt=\"Up Arrow\">");
+                break;
+            case "ArrowDown":
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-D-Pad-D.svg\" alt=\"Down Arrow\">");
+                break;
+            case "ArrowLeft":
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-D-Pad-L.svg\" alt=\"Left Arrow\">");
+                break;
+            case "ArrowRight":
+                $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-D-Pad-R.svg\" alt=\"Right Arrow\">");
+                break;
+        }
+    });
+    function restart(){
+        konamiCode = 0;
+        return true;
+    }
+
+    restart();
+
+
+    var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
+    var konamiCodePosition=0;
+
+    $(document).on('keyup', function(e) {
+        var key = e.originalEvent.code;
+        var requiredKey = konamiCode[konamiCodePosition];
+        if (key === requiredKey) {
+            konamiCodePosition++;
+            if (konamiCodePosition === konamiCode.length) {
+                var audio = new Audio('audio/contra-intro.mp3');
+                audio.play();
+                $('h1').html('You have added 30 lives!');
+                $("#cheats").html("<img id=\"button\" src=\"img/contra-tv.png\" alt=\"button\">");
+                restart();
+            }
+        } else {
+            konamiCodePosition = 0;
+        }
+    });
+</script>
+</body>
+</html>
