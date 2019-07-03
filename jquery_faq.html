@@ -3,8 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .invisible{
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
+<dl>
+    <dt>Who is the director of the National Park Service?</dt>
+    <dd class="invisible"><a href="https://www.nps.gov/aboutus/director.htm">Dan Smith</a> is the deputy director exercising the authority of director for the National Park Service.</dd>
+    <dt>What government agency oversees the National Park Service?</dt>
+    <dd class="invisible">The National Park Service is a bureau of the Department of the Interior. Directly overseeing its operation is the department's Assistant Secretary for Fish, Wildlife and Parks.</dd>
+    <dt>How old is the National Park System?</dt>
+    <dd class="invisible">The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. View the National Park System <a href="https://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htm">timeline.</a></dd>
+    <dt>What is the most-visited national park?</dt>
+    <dd class="invisible"><a href="https://www.nps.gov/aboutus/visitation-numbers.htm">View these fancy tables of the most-visited sites in the National Park Service.</a></dd>
+    <dt>Can I bring my pet to a national park?</dt>
+    <dd class="invisible">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities. Learn more about <a href="https://www.nps.gov/subjects/pets/index.htm">pets in parks.</a></dd>
+    <dt>Where can I find a park map?</dt>
+    <dd class="invisible">You can view maps on <a href="https://www.nps.gov/findapark/index.htm">specific park websites</a> or <a href="https://www.nps.gov/subjects/hfc/index.htm">download maps from the Harpers Ferry Center map collection.</a></dd>
+    <dt>What is the largest national park site?</dt>
+    <dd class="invisible">Largest: <a href="https://www.nps.gov/wrst/index.htm">Wrangell-St. Elias National Park and Preserve</a>, AK, at 13.2 million acres</dd>
+    <dt>What is the largest national park site?</dt>
+    <dd class="invisible">Smallest: <a href="https://www.nps.gov/thko/index.htm">Thaddeus Kosciuszko National Memorial</a>, PA, at 0.02 acres</dd>
+    <dt>How many people visit the national parks?</dt>
+    <dd class="invisible">Total recreation visitors to the national parks in 2018: 318,211,833.</dd>
+    <dt>Who is the Deputy Midwest Region Director of the National Park Service?</dt>
+    <dd class="invisible"><del>Patricia Trap</del>Leslie Barbara Knope, of course!<img src="img/leslie-knope.gif"></dd>
+</dl>
+<a href="#" id="toggle-me">Toggle!</a>
+<script src="js/jquery-2.x-git.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#toggle-me').click(function(event) {
+            event.preventDefault();
+            $('dd').toggleClass('invisible');
+        });
+    });
+</script>
 
 </body>
 </html>
