@@ -7,15 +7,52 @@
         body{
             font-family: 'Press Start 2P', cursive;
         }
+        #container{
+            position: relative;
+            margin: 0 auto;
+        }
+        #cheats {
+            font-size: 24px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        #next {
+            height: 66px;
+            width: 120px;
+            border: 1px solid black;
+            position: relative;
+            margin: 145px 0 0 666px;
+            z-index: 10;
+        }
+        #prev {
+            height: 66px;
+            width: 120px;
+            border: 1px solid black;
+            position: relative;
+            margin: 70px 0 0 666px;
+            z-index: 10;
+        }
+
     </style>
 </head>
 <body>
 <h1>Konami Code</h1>
-<div id = "cheats"></div>
+<div id="container">
+    <div id = "cheats"></div>
+<!--    <canvas id="next"></canvas>-->
+<!--    <canvas id="prev"></canvas>-->
+</div>
 
 <script src="js/jquery-2.x-git.js"></script>
 <script>
     "use strict";
+    // function draw(){
+    //     var next = document.getElementById("next");
+    //     if (next.getContext){
+    //         var ctx = next.getContext('2d');
+    //     }
+    // }
 
     $(document).keydown(function(e) {
         var keySelection = e.originalEvent.code;
@@ -30,6 +67,98 @@
             case "KeyB":
                 $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-B.svg\" alt=\"B button\">");
                 break;
+            case "KeyC":
+                $("#cheats").html("C");
+                break;
+            case "KeyD":
+                $("#cheats").html("D");
+                break;
+            case "KeyE":
+                $("#cheats").html("E");
+                break;
+            case "KeyF":
+                $("#cheats").html("F");
+                break;
+            case "KeyG":
+                $("#cheats").html("G");
+                break;
+            case "KeyH":
+                $("#cheats").html("H");
+                break;
+                case "KeyI":
+                $("#cheats").html("I");
+                break;
+            case "KeyJ":
+                $("#cheats").html("J");
+                break;
+            case "KeyK":
+                $("#cheats").html("K");
+                break;
+            case "KeyL":
+                $("#cheats").html("L");
+                break;
+            case "KeyM":
+                $("#cheats").html("M");
+                break;
+            case "KeyN":
+                $("#cheats").html("N");
+                break;
+            case "KeyO":
+                $("#cheats").html("O");
+                break;
+            case "KeyP":
+                $("#cheats").html("P");
+                break;
+            case "KeyQ":
+                $("#cheats").html("Q");
+                break;
+            case "KeyR":
+                $("#cheats").html("R");
+                break;
+            case "KeyS":
+                $("#cheats").html("S");
+                break;
+            case "KeyT":
+                $("#cheats").html("T");
+                break;
+            case "KeyU":
+                $("#cheats").html("U");
+                break;
+            case "KeyV":
+                $("#cheats").html("V");
+                break;
+            case "KeyQ":
+                $("#cheats").html("Q");
+                break;
+            case "KeyR":
+                $("#cheats").html("R");
+                break;
+            case "KeyS":
+                $("#cheats").html("S");
+                break;
+            case "KeyT":
+                $("#cheats").html("T");
+                break;
+            case "KeyU":
+                $("#cheats").html("U");
+                break;
+            case "KeyV":
+                $("#cheats").html("V");
+                break;
+            case "KeyW":
+                $("#cheats").html("W");
+                break;
+            case "KeyX":
+                $("#cheats").html("X");
+                break;
+            case "KeyY":
+                $("#cheats").html("Y");
+                break;
+            case "KeyZ":
+                $("#cheats").html("Z");
+                break;
+            case "Semicolon":
+                $("cheats").html(";");
             case "ArrowUp":
                 $("#cheats").html("<img id=\"button\" src=\"img/ButtonIcon-N64-D-Pad-U.svg\" alt=\"Up Arrow\">");
                 break;
@@ -44,16 +173,21 @@
                 break;
         }
     });
+
+
+    //OG Konami Code
+    var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
+    var konamiCodePosition=0;
+    //The Sims
+    var simsCode = ['KeyR', 'KeyO','KeyS', 'KeyE', 'KeyB', 'KeyU', 'KeyD', 'Semicolon'];
+    var simsCodePosition=0;
+
     function restart(){
+        simsCode = 0;
         konamiCode = 0;
         return true;
     }
 
-    restart();
-
-
-    var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
-    var konamiCodePosition=0;
 
     $(document).on('keyup', function(e) {
         var key = e.originalEvent.code;
@@ -64,11 +198,30 @@
                 var audio = new Audio('audio/contra-intro.mp3');
                 audio.play();
                 $('h1').html('You have added 30 lives!');
-                $("#cheats").html("<img id=\"button\" src=\"img/contra-tv.png\" alt=\"button\">");
+                $("#cheats").html("<img id=\"contra\" src=\"img/contra-tv.png\" alt=\"contra\">");
+                    // $("#next").click(function(){
+                    //     $(this).html("<img id=\"static\" src=\"img/static-tv.png\" alt=\"static\">");
+                    // });
                 restart();
             }
         } else {
             konamiCodePosition = 0;
+        }
+    });
+    $(document).on('keydown', function(e) {
+        var keySims = e.originalEvent.code;
+        var requiredKeySims = simsCode[simsCodePosition];
+        if (keySims === requiredKeySims) {
+            simsCodePosition++;
+            if (simsCodePosition === simsCode.length) {
+                // var audio = new Audio('');
+                // audio.play();
+                $('h1').html('You gained 1000 Simoleons.');
+                $("#cheats").html("<img id=\"sims\" src=\"img/sims-tv.png\" alt=\"sims\">");
+                restart();
+            }
+        } else {
+            simsCodePosition = 0;
         }
     });
 </script>
