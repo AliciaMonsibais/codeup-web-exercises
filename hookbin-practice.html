@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hookbin Sandbox</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<form method="POST" action="">
+    <div class="input-group">
+        <input placeholder="Enter Info" class="info" type="text" name="user-info">
+    </div>
+    <button class ="btn btn-success">Submit</button>
+</form>
+
+<script src="js/jquery-2.x-git.js"></script>
+<script>
+    $(document).ready(function() {
+        "use strict";
+        // $.ajax("https://swapi.co/api/films").done(function(data) {
+        //     console.log(data);
+        // });
+        // $.ajax({
+        //     "url": "https://swapi.co/api/films",
+        //     "type": "GET",
+        //     "data": {
+        //         "search": "A New Hope"
+        //     }
+        // }).done(function(data, status, jqXhr) {
+        //     console.log(status);
+        //     console.log(data);
+        //     console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
+        // }).fail(function(jqXhr, status, error) {
+        //     console.log("Request failed! " + status);
+        // }).always(function() {
+        //     console.log("Request made.");
+        // });
+        //
+        // var jqXhr = $.ajax("https://swapi.co/api/films", {
+        //     "type": "GET",
+        //     "data": {
+        //         "search": "A New Hope"
+        //     }
+        // });
+        //
+        // console.log(jqXhr);
+        //
+        // jqXhr.done(function(data) {
+        //     console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
+        // });
+        $.ajax("https://pokeapi.co/api/v2/").done(function(data, status, jqXhr) {
+            alert("AJAX call completed successfully!");
+            console.log("Request status: " + status);
+            console.log("Data returned from server:");
+            console.log(data);
+        });
+        $.ajax({
+                "url": "https://pokeapi.co/api/v2/",
+                "type": "GET",
+                "data": {
+                    "pokemon.name": "pikachu"
+                }
+            })
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
