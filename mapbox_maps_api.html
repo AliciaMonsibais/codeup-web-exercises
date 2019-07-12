@@ -28,7 +28,7 @@
 
 <!-- Custom JS -->
 <script>
-    mapboxgl.accessToken = mapboxtoken;
+    mapboxgl.accessToken = mapboxToken;
     var sanAntonio = geocode("San Antonio, TX", mapboxtoken).then(function(coordinates){
         var sanAntonio = coordinates;
         var mapOptions = {
@@ -41,7 +41,7 @@
     });
 
 
-    geocode("La Fonda on Main", mapboxtoken).then(function(laFonda){
+    geocode("La Fonda on Main", mapboxToken).then(function(laFonda){
         var marker1 = new mapboxgl
             .setLngLat(laFonda)
             .setHTML ("<strong>La Fonda on Main</strong>");

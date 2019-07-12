@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 1em;
+            padding: auto;
+            background-color: #ABDCFD;
+        }
+        #map {
+            position: relative;
+            width: 1110px;
+            height: 481px; }
+    </style>
+</head>
+<body>
+<h1 class="text-center">Welcome to:<span id="location"> San Antonio, TX</span></h1>
+<div id="weather">
+    <div id="weatherCards" class="row">
+    </div>
+</div>
+
+<div class="bottom mx-2 mt-3">
+    <div class="userInteraction">
+        <h5 class="text-center">Where would you like to go?</h5>
+        <p class="text-center">Enter any of the following:</p>
+        <ul>
+            <li>Coordinates</li>
+            <li>Name of the location</li>
+            <li>Zip Code</li>
+            <li>Address</li>
+            <li>Name of place</li>
+        </ul>
+        <p class="text-center">and click the button for updated<br>forecast and map</p>
+        <div class="input-group">
+            <input id="userAdd" type="text" class="form-control mb-0" placeholder="Enter location here" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+<!--        <div class="justify-content-center">-->
+        <button type="button" id="uInput" class="btn btn-danger mx-auto">I Want to Go To There</button>
+<!--    </div>-->
+    </div>
+    <div class="mapLoc">
+
+        <div id='map'></div>
+    </div>
+
+</div>
+
+<script src="js/keys.js"></script>
+<script src="js/jquery-2.x-git.js"></script>
+<!--mapbox utilities and JS-->
+<script src="js/mapbox-utils.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
+<!--bootstrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--custom JS-->
+<script>
+    $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8f5502c132c8ea697e8aa3139a6eefee/29.4241,-98.4936").done(function(data) {
+        console.log(data);
+        var dateObject = new Date(data.currently.time * 1000);
+        console.log(dateObject);
+
+    });
+
+    "use strict";
+    var darkSkyUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/';
+    var darkSkyKey = darkSkyKey;
+    var lat = 29.4241;
+    var lng = -98.4936;
+    var changeLocation = document.getElementById('location');
+
+    function dailyForecast(data) {
+        var html = '';
+        console.log(data);
+
+        data.forEach(function(day){
+            data.length = 3;
+            html += '<div class="col-4">';
+                html += '<div class="card m-3">';
+                    html += '<div class="card-body mx-3">';
+                        html += '<p class="date">' + (new Date(day.time * 1000).toDateString()) + '</p>';
+                        html += '<p class="highTemp">' + 'High: ' + day.temperatureHigh + '&#8457;' + '</p>';
+                        html += '<p class="lowTemp">' + 'Low: ' + day.temperatureLow + '&#8457;' + '</p>';
+                        html += '<div id="climacons">' + '<img class="weatherIcons"' + ' ' + 'src="' + 'img/' + 'climacons/' + day.icon + '.svg' + '"' + 'alt="' + day.icon + '"' +'>' + '</div>';
+                        html += '<div class="summary">' + '<p>' + day.summary + '</p>' + '</div>';
+                        html += '<div class = "humidity">' + '<p>' + 'Humidity: ' + day.humidity + '</p>' + '</div>';
+                        html += '<div class = "wind">' + '<p>' + 'Wind: ' + day.windSpeed + '</p>' + '</div>';
+                        html += '<div class = "pressure">' + '<p>' + 'Pressure: ' + day.pressure + '</p>' + '</div>';
+                    html += '</div>';
+                html += '</div>';
+            html += '</div>';
+        });
+        return html;
+    }
+    $.get(darkSkyUrl + darkSkyKey + "/" + lat + "," + lng).done(function(data){
+        $('#weatherCards').html(dailyForecast(data.daily.data));
+    }) .fail(function() {
+        console.log("NOPE");
+    });
+
+
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [lng, lat],
+        zoom: 8
+    });
+    console.log(map);
+
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+
+    var goThere = document.getElementById('uInput');
+    goThere.addEventListener('click' ,function (event) {
+        geocode(userAdd.value,mapboxToken).then(function (result) {
+            changeLocation.innerText = userAdd.value;
+            $('#navLocation').text(userAdd.value);
+            map.setCenter(result);
+            map.setZoom(8);
+            var newLocation = (result[1] + ',' + result[0]);
+            $.get(darkSkyUrl + darkSkyKey + "/" + newLocation).done(function(data){
+                $('#weatherCards').html(dailyForecast(data.daily.data));
+            }).fail(function(){
+                console.log("ERROR!");
+            });
+        });
+    }, false);
+
+
+    var saInfo = {
+        address: [lng, lat]
+    };
+
+    function placeMarker(info, token, map) {
+        geocode(info.address, token).then(function(coordinates) {
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+        });
+    }
+
+    placeMarker(saInfo, mapboxToken, map);
+
+
+    //you only need to mess around with forecast call
+    //if you go to Mapbox API lesson, remember to go to reverse geocoding and geocoding. Functions already exist there.
+</script>
+
+</body>
+</html>

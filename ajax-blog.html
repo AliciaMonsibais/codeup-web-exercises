@@ -4,27 +4,81 @@
     <meta charset="UTF-8">
     <title>Ajax Blog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/ajax-blog.css">
 </head>
 <body>
-<div id="posts">
+
+<div id="banner"></div>
+<div class="row mx-auto justify-content-center">
+    <nav class="navbar">
+        <ul class="nav navbar-expand-sm ducks">
+            <li class="nav-item">
+            <a class="nav-link" href="#">ABOUT</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">DUCKS</a>
+        </li>
+        </ul>
+        <a class="navbar-brand" href="#">
+            <img src="img/king-arthur.jpg" class="mx-auto d-block king-arthur" alt="Blog Design">Has Anybody Seen My Cup?</a>
+        <ul class="nav navbar-expand-sm witches">
+        <li class="nav-item">
+            <a class="nav-link" href="#">WITCHES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">NI</a>
+        </li>
+        </ul>
+    </nav>
+</div>
+<br>
+<br>
+<!--<section class ="container">-->
+<!--    <label for="query">Search: </label>-->
+<!--    <input id="query" type="text">-->
+<!--    <br>-->
+<!--    <button id="submitQuery">Search</button>-->
+<!--</section>-->
+    <div class="container">
+
+    <div id="posts">
+        <h1></h1>
+    </div>
 </div>
 <script src="js/jquery-2.x-git.js"></script>
 <script>
     (function() {
         "use strict";
         $.get("data/blog.json", {
-        }).done(function(item, status, jqXhr) {
+        }).done(function(item) {
             console.log(item);
             for (var i = item.length - 1; i > -1; i--) {
                 console.log(item[i]);
                 $('#posts').append('<br>');
-                $('#posts').append('<div>' + item[i].title + '</div>');
+                $('#posts').append('<h1>' + item[i].title + '</h1>');
                 $('#posts').append('<div>' + item[i].date + '</div>');
                 $('#posts').append('<div>' + item[i].content + '</div>');
                 $('#posts').append('<div>' + item[i].categories.join(', ') + '</div>');
                 $('#posts').append('<hr>');
             }
         });
+        // var input = document.getElementById("query");
+        // function search() {
+        //     var filter = input.value.toLowerCase();
+        //     var posts = document.getElementById("posts");
+        //
+        //     for (var i = 0; i < posts.length; i++) {
+        //         var txtValue = posts.textContent || posts.innerText;
+        //         if (txtValue.toLowerCase().indexOf(filter) > -1) {
+        //             posts[i].style.display = "";
+        //         } else {
+        //             posts[i].style.display = "none";
+        //         }
+        //     }
+        // }
+        // document.getElementById("query").addEventListener("keyup", search);
+        // document.getElementById("submitQuery").addEventListener("click", search);
     })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
