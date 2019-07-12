@@ -12,6 +12,19 @@
             padding: auto;
             background-color: #ABDCFD;
         }
+        .userInteraction {
+            padding: 1em;
+            width: 500px;
+            margin: auto;
+        }
+        #weather {
+            padding: 2em;
+        }
+
+        #userAdd {
+            margin-bottom: 1em;
+        }
+
         #map {
             position: relative;
             width: 90%;
@@ -21,7 +34,7 @@
     </style>
 </head>
 <body>
-<h1 class="text-center">Welcome to:<pre id="location"> San Antonio, TX</pre></h1>
+<h1 class="text-center">Welcome to:<span id="location"> San Antonio, TX</span></h1>
 <div id="weather">
     <div id="weatherCards" class="row">
     </div>
@@ -30,22 +43,13 @@
 
 <div class="userInteraction">
     <h5 class="text-center">Where would you like to go?</h5>
-<!--        <p class="text-center">Enter any of the following:</p>-->
-<!--        <ul>-->
-<!--            <li>Coordinates</li>-->
-<!--            <li>Name of the location</li>-->
-<!--            <li>Zip Code</li>-->
-<!--            <li>Address</li>-->
-<!--            <li>Name of place</li>-->
-<!--        </ul>-->
-<!--        <p class="text-center">and click the button for updated<br>forecast and map</p>-->
     <div class="input-group">
         <input id="userAdd" type="text" class ="form-control" placeholder="Enter location here" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
         <button type="button" id="uInput" class="btn btn-primary btn-block">I Want to Go To There</button>
-<!--    </div>-->
-    <div id='map'></div>
 </div>
+
+<div id='map'></div>
 <!--    <div class="mapLoc"></div>-->
 
 <!--js key and query link-->
@@ -84,7 +88,7 @@
             data.length = 3;
             html += '<div class="col-4">';
                 html += '<div class="card m-3">';
-                    html += '<div class="card-body mx-3">';
+                    html += '<div class="card-body">';
                         html += '<p class="date">' + (new Date(day.time * 1000).toDateString()) + '</p>';
                         html += '<p class="highTemp">' + 'High: ' + day.temperatureHigh + '&#8457;' + '</p>';
                         html += '<p class="lowTemp">' + 'Low: ' + day.temperatureLow + '&#8457;' + '</p>';
