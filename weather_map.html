@@ -14,8 +14,10 @@
         }
         #map {
             position: relative;
-            width: 1110px;
-            height: 481px; }
+            width: 90%;
+            height: 481px;
+            margin: auto;
+        }
     </style>
 </head>
 <body>
@@ -25,30 +27,26 @@
     </div>
 </div>
 
-<div class="bottom mx-2 mt-3">
-    <div class="userInteraction">
-        <h5 class="text-center">Where would you like to go?</h5>
-        <p class="text-center">Enter any of the following:</p>
-        <ul>
-            <li>Coordinates</li>
-            <li>Name of the location</li>
-            <li>Zip Code</li>
-            <li>Address</li>
-            <li>Name of place</li>
-        </ul>
-        <p class="text-center">and click the button for updated<br>forecast and map</p>
-        <div class="input-group">
-            <input id="userAdd" type="text" class="form-control mb-0" placeholder="Enter location here" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+<div class="userInteraction">
+    <h5 class="text-center">Where would you like to go?</h5>
+<!--        <p class="text-center">Enter any of the following:</p>-->
+<!--        <ul>-->
+<!--            <li>Coordinates</li>-->
+<!--            <li>Name of the location</li>-->
+<!--            <li>Zip Code</li>-->
+<!--            <li>Address</li>-->
+<!--            <li>Name of place</li>-->
+<!--        </ul>-->
+<!--        <p class="text-center">and click the button for updated<br>forecast and map</p>-->
+    <div class="input-group">
+        <input id="userAdd" type="text" class ="form-control" placeholder="Enter location here" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
-<!--        <div class="justify-content-center">-->
-        <button type="button" id="uInput" class="btn btn-danger mx-auto">I Want to Go To There</button>
+        <button type="button" id="uInput" class="btn btn-primary btn-block">I Want to Go To There</button>
 <!--    </div>-->
-    </div>
-
     <div id='map'></div>
-<!--    <div class="mapLoc"></div>-->
-
 </div>
+<!--    <div class="mapLoc"></div>-->
 
 <!--js key and query link-->
 <script src="js/keys.js"></script>
@@ -56,23 +54,26 @@
 <!--mapbox utilities and JS-->
 <script src="js/mapbox-utils.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
 <!--bootstrap-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!--custom JS-->
 <script>
-    $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8f5502c132c8ea697e8aa3139a6eefee/29.4241,-98.4936").done(function(data) {
-        console.log(data);
-        var dateObject = new Date(data.currently.time * 1000);
-        console.log(dateObject);
-
-    });
 
     "use strict";
     var darkSkyUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/';
     var darkSkyKey = darkSkyKey;
     var lat = 29.4241;
     var lng = -98.4936;
+
+    $.get(darkSkyUrl + darkSkyKey + "/" + lat + "," + lng).done(function(data) {
+        console.log(data);
+        var dateObject = new Date(data.currently.time * 1000);
+        console.log(dateObject);
+
+    });
+
     var changeLocation = document.getElementById('location');
 
     function dailyForecast(data) {
@@ -114,10 +115,11 @@
     });
     console.log(map);
 
-    // Add zoom and rotation controls to the map.
+
+    // // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
 
-    //user input for map coordinates
+    // user input for map coordinates
     var goThere = document.getElementById('uInput');
     goThere.addEventListener('click' ,function (event) {
         geocode(userAdd.value,mapboxToken).then(function (result) {
@@ -133,6 +135,44 @@
             });
         });
     }, false);
+
+
+
+    //draggable marker
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([lng, lat])
+        .addTo(map);
+
+    function onDragEnd(){
+        var lngLat = marker.getLngLat();
+        changeLocation.style.display = 'block';
+        changeLocation.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        var dragSearch=("/" + lngLat.lat + "," + lngLat.lng);
+        // var newLocation= (darkSkyUrl + darkSkyKey + dragSearch);
+        // dailyForecast(newLocation);
+        $.get(darkSkyUrl + darkSkyKey + dragSearch).done(function(data){
+            $('#weatherCards').html(dailyForecast(data.daily.data));
+        }) .fail(function() {
+            console.log("NOPE");
+        });
+    }
+    marker.on('dragend', onDragEnd);
+
+    reverseGeocode(11).then
+
+    // function updateMarker(pos){
+    //     geocoder.geocode({
+    //         latLng.pos
+    //     }, function(responses){
+    //         if (responses && responses.length > 0) {
+    //             updateMarkerAddress(responses[0].formatted_address);
+    //         } else {
+    //             updateMarkerAddress('Cannot locate address.');
+    //         }
+    //     });
+    // }
 
     //map marker
     // var saInfo = {
@@ -177,25 +217,6 @@
     // // Update current position info.
     // updateMarkerPosition(latLng);
     // geocodePosition(latLng);
-
-    //draggable marker
-    var marker = new mapboxgl.Marker({
-        draggable: true
-    })
-        .setLngLat([lng, lat])
-        .addTo(map);
-
-    function onDragEnd(){
-        var lngLat = marker.getLngLat();
-        changeLocation.style.display = 'block';
-        changeLocation.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-    }
-    marker.on('dragend', onDragEnd);
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 123a43d9d393e283da20b8a6385ac42f8bb19a28
 
 
     //if you go to Mapbox API lesson, remember to go to reverse geocoding and geocoding. Functions already exist there.
