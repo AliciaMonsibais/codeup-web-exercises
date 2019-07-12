@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-<h1 class="text-center">Welcome to:<span id="location"> San Antonio, TX</span></h1>
+<h1 class="text-center">Welcome to:<pre id="location"> San Antonio, TX</pre></h1>
 <div id="weather">
     <div id="weatherCards" class="row">
     </div>
@@ -44,10 +44,9 @@
         <button type="button" id="uInput" class="btn btn-danger mx-auto">I Want to Go To There</button>
 <!--    </div>-->
     </div>
-    <div class="mapLoc">
 
-        <div id='map'></div>
-    </div>
+    <div id='map'></div>
+<!--    <div class="mapLoc"></div>-->
 
 </div>
 
@@ -118,6 +117,7 @@
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
 
+    //user input for map coordinates
     var goThere = document.getElementById('uInput');
     goThere.addEventListener('click' ,function (event) {
         geocode(userAdd.value,mapboxToken).then(function (result) {
@@ -134,20 +134,65 @@
         });
     }, false);
 
+    //map marker
+    // var saInfo = {
+    //     address: [lng, lat]
+    // };
+    //
+    // function placeMarker(info, token, map) {
+    //     geocode(info.address, token).then(function(coordinates) {
+    //         var marker = new mapboxgl.Marker()
+    //             .setLngLat(coordinates)
+    //             .addTo(map)
+    //     });
+    // }
 
-    var saInfo = {
-        address: [lng, lat]
-    };
+    // placeMarker(saInfo, mapboxToken, map);
 
-    function placeMarker(info, token, map) {
-        geocode(info.address, token).then(function(coordinates) {
-            var marker = new mapboxgl.Marker()
-                .setLngLat(coordinates)
-                .addTo(map)
-        });
+    // //update marker position
+    // function geocodePosition(pos){
+    //     geocoder.geocode({
+    //         latLng.pos
+    //     }, function(responses){
+    //         if (responses && responses.length > 0) {
+    //             updateMarkerAddress(responses[0].formatted_address);
+    //         } else {
+    //             updateMarkerAddress('Cannot locate address.');
+    //         }
+    //     });
+    // }
+    // function updateMarkerStatus(str) {
+    //     document.getElementById('markerStatus').innerHTML = str;
+    // }
+    // function updateMarkerPosition(latLng) {
+    //     document.getElementById('info').innerHTML = [
+    //         latLng.lat(),
+    //         latLng.lng()
+    //     ].join(', ');
+    // }
+    // function updateMarkerAddress(str) {
+    //     document.getElementById('address').innerHTML = str;
+    // }
+    //
+    // // Update current position info.
+    // updateMarkerPosition(latLng);
+    // geocodePosition(latLng);
+
+    //draggable marker
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([lng, lat])
+        .addTo(map);
+
+    function onDragEnd(){
+        var lngLat = marker.getLngLat();
+        changeLocation.style.display = 'block';
+        changeLocation.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
     }
+    marker.on('dragend', onDragEnd);
 
-    placeMarker(saInfo, mapboxToken, map);
+
 
 
     //you only need to mess around with forecast call
