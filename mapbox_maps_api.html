@@ -29,48 +29,68 @@
 <!-- Custom JS -->
 <script>
     mapboxgl.accessToken = mapboxToken;
-    var sanAntonio = geocode("San Antonio, TX", mapboxtoken).then(function(coordinates){
+    var sanAntonio;
+    geocode("San Antonio, TX", mapboxToken).then(function(coordinates){
         var sanAntonio = coordinates;
         var mapOptions = {
-            center: sanAntonio,
-            zoom: 12,
+            container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
-            container: 'map'
+            zoom: 12,
+            center: sanAntonio
         };
-        var map = new mapboxgl.Map(mapOptions);
+        var myMap = new mapboxgl.Map(mapOptions);
+        myMap.setZoom(15);
+
+        var favoriteRestaurants = [
+            {name: "La Fonda on Main"},
+            {name: "Madhatters Tea House & Cafe"},
+            {name: "Sawasdee Thai Restaurant"}
+        ];
+
+        favoriteRestaurants.forEach(function (item){
+            geocode(item.name + ", San Antonio, TX", mapboxToken).then(function(coord){
+                var popup1 = new mapboxgl.Popup({closeButton:true})
+                    .setHTML("<p>" + item.name + "</p>")
+                    .setLngLat(coord);
+                var marker1 = new mapboxgl.Marker({color: "blue"})
+                    .setLngLat(coord)
+                    .addTo(myMap)
+                    .setPopup(popup1);
+            })
+        })
     });
-
-
-    geocode("La Fonda on Main", mapboxToken).then(function(laFonda){
-        var marker1 = new mapboxgl
-            .setLngLat(laFonda)
-            .setHTML ("<strong>La Fonda on Main</strong>");
-        var popup1 = new mapboxgl.Popup()
-            .setLngLat(laFonda)
-            .addTo(ourMap)
-            .setPopup(popup1);
-    });
-var restaurants = [
-    {
-        name: "La Fonda on Main",
-        description: "<strong>La Fonda on Main</strong> 🍸\n<p>The oldest Mexican restaurant in San Antonio (est. 1932) that serves excellend Tex-Mex and interior Mexican food for brunch, lunch, and dinner.</p>",
-        coordinates: [-98.494117, 29.452578]
-
-    },
-    {
-        name: "Madhatters Tea House & Cafe",
-        description: "<strong>Madhatters Tea House & Cafe </strong>☕︎\n<p>An unusual cafe with a variety of teas to choose from. Their Our Story section was blank on their website. Sad day.</p>",
-        coordinates: [-98.491211, 29.414278]
-    },
-    {
-        name: "Sawasdee Thai Restaurant",
-        description: "<strong>Sawasdee Thai Restaurant</strong> <p>A go-to place for Thai food.</p>",
-        coordinates: [-98.507412, 29.514305]
-    }
-];
-restaurants.forEach(function(item){
-    geocode.(item.name, mapboxtoken).then(function)
-})
+//
+//
+//     geocode("La Fonda on Main", mapboxToken).then(function(laFonda){
+//         var marker1 = new mapboxgl
+//             .setLngLat(laFonda)
+//             .setHTML ("<strong>La Fonda on Main</strong>");
+//         var popup1 = new mapboxgl.Popup()
+//             .setLngLat(laFonda)
+//             .addTo(ourMap)
+//             .setPopup(popup1);
+//     });
+// var restaurants = [
+//     {
+//         name: "La Fonda on Main",
+//         description: "<strong>La Fonda on Main</strong> 🍸\n<p>The oldest Mexican restaurant in San Antonio (est. 1932) that serves excellend Tex-Mex and interior Mexican food for brunch, lunch, and dinner.</p>",
+//         coordinates: [-98.494117, 29.452578]
+//
+//     },
+//     {
+//         name: "Madhatters Tea House & Cafe",
+//         description: "<strong>Madhatters Tea House & Cafe </strong>☕︎\n<p>An unusual cafe with a variety of teas to choose from. Their Our Story section was blank on their website. Sad day.</p>",
+//         coordinates: [-98.491211, 29.414278]
+//     },
+//     {
+//         name: "Sawasdee Thai Restaurant",
+//         description: "<strong>Sawasdee Thai Restaurant</strong> <p>A go-to place for Thai food.</p>",
+//         coordinates: [-98.507412, 29.514305]
+//     }
+// ]
+// restaurants.forEach(function(item){
+//     geocode.(item.name, mapboxtoken).then(function)
+// });
 
 //     //create marker for La Fonda
 //     var laFondaMarker = new mapboxgl.Marker()
