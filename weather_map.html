@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-<h1 class="text-center">Welcome to:<span id="location"> San Antonio, TX</span></h1>
+<h1 class="text-center">Welcome to: <span id="location"> San Antonio, TX</span></h1>
 <div id="weather">
     <div id="weatherCards" class="row">
     </div>
@@ -46,7 +46,7 @@
     <div class="input-group">
         <input id="userAdd" type="text" class ="form-control" placeholder="Enter location here" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
-        <button type="button" id="uInput" class="btn btn-primary btn-block">I Want to Go To There</button>
+        <button type="button" id="uInput" class="btn btn-primary btn-info">I Want to Go To There</button>
 </div>
 
 <div id='map'></div>
@@ -90,13 +90,13 @@
                 html += '<div class="card m-3">';
                     html += '<div class="card-body">';
                         html += '<p class="date">' + (new Date(day.time * 1000).toDateString()) + '</p>';
-                        html += '<p class="highTemp">' + 'High: ' + day.temperatureHigh + '&#8457;' + '</p>';
-                        html += '<p class="lowTemp">' + 'Low: ' + day.temperatureLow + '&#8457;' + '</p>';
+                        html += '<p class="highTemp">' + 'High: ' + day.temperatureHigh.toFixed(0) + '&#8457;' + '</p>';
+                        html += '<p class="lowTemp">' + 'Low: ' + day.temperatureLow.toFixed(0) + '&#8457;' + '</p>';
                         html += '<div id="climacons">' + '<img class="weatherIcons"' + ' ' + 'src="' + 'img/' + 'climacons/' + day.icon + '.svg' + '"' + 'alt="' + day.icon + '"' +'>' + '</div>';
                         html += '<div class="summary">' + '<p>' + day.summary + '</p>' + '</div>';
                         html += '<div class = "humidity">' + '<p>' + 'Humidity: ' + day.humidity + '</p>' + '</div>';
                         html += '<div class = "wind">' + '<p>' + 'Wind: ' + day.windSpeed + '</p>' + '</div>';
-                        html += '<div class = "pressure">' + '<p>' + 'Pressure: ' + day.pressure + '</p>' + '</div>';
+                        html += '<div class = "pressure">' + '<p>' + 'Pressure: ' + day.pressure.toFixed(1) + '</p>' + '</div>';
                     html += '</div>';
                 html += '</div>';
             html += '</div>';
