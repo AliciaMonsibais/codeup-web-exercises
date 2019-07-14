@@ -131,6 +131,9 @@
             $('#navLocation').text(userAdd.value);
             map.setCenter(result);
             map.setZoom(8);
+            new mapboxgl.Marker()
+                .setLngLat(result)
+                .addTo(map);
             var newLocation = (result[1] + ',' + result[0]);
             $.get(darkSkyUrl + darkSkyKey + "/" + newLocation).done(function(data){
                 $('#weatherCards').html(dailyForecast(data.daily.data));
@@ -151,8 +154,15 @@
 
     function onDragEnd(){
         var lngLat = marker.getLngLat();
+        var lng1 = lngLat.lng;
+        var lat1 = lngLat.lat;
+        var coord = [lng1, lat1];
+        reverseGeocode({lng: lng1, lat: lat1}, mapboxToken).then(function(results) {
+            console.log(results);
+            $('#location').html(results)
+        });
         changeLocation.style.display = 'block';
-        changeLocation.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        changeLocation.innerHTML = 'Longitude: ' + lngLat.lng1 + '<br />Latitude: ' + lngLat.lat1;
         var dragSearch=("/" + lngLat.lat + "," + lngLat.lng);
         // var newLocation= (darkSkyUrl + darkSkyKey + dragSearch);
         // dailyForecast(newLocation);
@@ -164,7 +174,25 @@
     }
     marker.on('dragend', onDragEnd);
 
-    reverseGeocode(11).then
+    // function onDragEnd() {
+    //     var lngLat = marker.getLngLat();
+    //     var lng = lngLat.lng.toFixed(4);
+    //     var lat = lngLat.lat.toFixed(4);
+    //     coord = [lng, lat];
+    //     console.log(lng);
+    //     console.log(lat);
+    //     reverseGeocode({lng: lng, lat: lat}, mapBoxAccessKey).then(function(results) {
+    //         console.log(results);
+    //         $('h3').html(results)
+    //     });
+    //     coordinates.style.display = 'block';
+    //     coordinates.innerHTML = 'Longitude: ' + lng + '<br />Latitude: ' + lat;
+    //     refreshed();
+    // }
+
+    // geocoder.on('result', function(e) {
+    //     map.getSource('single-point').setData(e.result.geometry);
+    // });
 
     // function updateMarker(pos){
     //     geocoder.geocode({
