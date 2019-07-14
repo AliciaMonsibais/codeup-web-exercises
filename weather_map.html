@@ -34,6 +34,7 @@
     </style>
 </head>
 <body>
+<div class="weather-container">
 <h1 class="text-center">Welcome to: <span id="location"> San Antonio, TX</span></h1>
 <div id="weather">
     <div id="weatherCards" class="row">
@@ -50,7 +51,10 @@
 </div>
 
 <div id='map'></div>
-<!--    <div class="mapLoc"></div>-->
+</div>
+<div class="cheats">
+
+</div>
 
 <!--js key and query link-->
 <script src="js/keys.js"></script>
@@ -131,8 +135,8 @@
             $('#navLocation').text(userAdd.value);
             map.setCenter(result);
             map.setZoom(8);
-            new mapboxgl.Marker()
-                .setLngLat(result)
+            // new mapboxgl.Marker()
+                marker.setLngLat(result)
                 .addTo(map);
             var newLocation = (result[1] + ',' + result[0]);
             $.get(darkSkyUrl + darkSkyKey + "/" + newLocation).done(function(data){
@@ -151,18 +155,26 @@
     })
         .setLngLat([lng, lat])
         .addTo(map);
-
+//use mapbox.places??
+    //populates new location and weather when dragging marker
     function onDragEnd(){
         var lngLat = marker.getLngLat();
         var lng1 = lngLat.lng;
         var lat1 = lngLat.lat;
-        var coord = [lng1, lat1];
+        // var coord = [lng1, lat1];
         reverseGeocode({lng: lng1, lat: lat1}, mapboxToken).then(function(results) {
             console.log(results);
-            $('#location').html(results)
+            // for (var i = 0; i < results.length; i++) {
+            //     if (results[i].types[0] === "locality") {
+            //         var city = results[i].address_components[0].short_name;
+            //         var state = results[i].address_components[2].short_name;
+            //         $("input[name='location']").val(city + ", " + state);
+            //     }
+                $('#location').html(results)
+            // }
         });
-        changeLocation.style.display = 'block';
-        changeLocation.innerHTML = 'Longitude: ' + lngLat.lng1 + '<br />Latitude: ' + lngLat.lat1;
+        // changeLocation.style.display = 'block';
+        // changeLocation.innerHTML = 'Longitude: ' + lngLat.lng1 + '<br />Latitude: ' + lngLat.lat1;
         var dragSearch=("/" + lngLat.lat + "," + lngLat.lng);
         // var newLocation= (darkSkyUrl + darkSkyKey + dragSearch);
         // dailyForecast(newLocation);
@@ -174,81 +186,24 @@
     }
     marker.on('dragend', onDragEnd);
 
-    // function onDragEnd() {
-    //     var lngLat = marker.getLngLat();
-    //     var lng = lngLat.lng.toFixed(4);
-    //     var lat = lngLat.lat.toFixed(4);
-    //     coord = [lng, lat];
-    //     console.log(lng);
-    //     console.log(lat);
-    //     reverseGeocode({lng: lng, lat: lat}, mapBoxAccessKey).then(function(results) {
-    //         console.log(results);
-    //         $('h3').html(results)
-    //     });
-    //     coordinates.style.display = 'block';
-    //     coordinates.innerHTML = 'Longitude: ' + lng + '<br />Latitude: ' + lat;
-    //     refreshed();
-    // }
+    //Easter Egg
+    //OG Konami Code
+    var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
+    var konamiCodePosition=0;
 
-    // geocoder.on('result', function(e) {
-    //     map.getSource('single-point').setData(e.result.geometry);
-    // });
-
-    // function updateMarker(pos){
-    //     geocoder.geocode({
-    //         latLng.pos
-    //     }, function(responses){
-    //         if (responses && responses.length > 0) {
-    //             updateMarkerAddress(responses[0].formatted_address);
-    //         } else {
-    //             updateMarkerAddress('Cannot locate address.');
-    //         }
-    //     });
-    // }
-
-    //map marker
-    // var saInfo = {
-    //     address: [lng, lat]
-    // };
-    //
-    // function placeMarker(info, token, map) {
-    //     geocode(info.address, token).then(function(coordinates) {
-    //         var marker = new mapboxgl.Marker()
-    //             .setLngLat(coordinates)
-    //             .addTo(map)
-    //     });
-    // }
-
-    // placeMarker(saInfo, mapboxToken, map);
-
-    // //update marker position
-    // function geocodePosition(pos){
-    //     geocoder.geocode({
-    //         latLng.pos
-    //     }, function(responses){
-    //         if (responses && responses.length > 0) {
-    //             updateMarkerAddress(responses[0].formatted_address);
-    //         } else {
-    //             updateMarkerAddress('Cannot locate address.');
-    //         }
-    //     });
-    // }
-    // function updateMarkerStatus(str) {
-    //     document.getElementById('markerStatus').innerHTML = str;
-    // }
-    // function updateMarkerPosition(latLng) {
-    //     document.getElementById('info').innerHTML = [
-    //         latLng.lat(),
-    //         latLng.lng()
-    //     ].join(', ');
-    // }
-    // function updateMarkerAddress(str) {
-    //     document.getElementById('address').innerHTML = str;
-    // }
-    //
-    // // Update current position info.
-    // updateMarkerPosition(latLng);
-    // geocodePosition(latLng);
+    $(document).on('keyup', function(e) {
+        var key = e.originalEvent.code;
+        var requiredKey = konamiCode[konamiCodePosition];
+        if (key === requiredKey) {
+            konamiCodePosition++;
+            if (konamiCodePosition === konamiCode.length) {
+                $(".cheats").html("<img id=\"contra\" src=\"img/contra-tv.png\" alt=\"contra\">");
+                restart();
+            }
+        } else {
+            konamiCodePosition = 0;
+        }
+    });
 
 
     //if you go to Mapbox API lesson, remember to go to reverse geocoding and geocoding. Functions already exist there.
