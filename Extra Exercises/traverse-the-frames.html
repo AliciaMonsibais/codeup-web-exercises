@@ -39,18 +39,23 @@
     "use strict";
 
     $(document).ready(function(){
-        var imgLeft = $("#left").attr("src");
-        var imgCenter = $("#center").attr("src");
-        var imgRight = $("#right").attr("src");
+
         $("#switch1").click(function(){
+            var imgLeft = $("#left").attr("src");
+            var imgCenter = $("#center").attr("src");
             $("#left").attr("src", imgCenter);
             $("#center").attr("src", imgLeft);
         });
         $("#switch3").click(function(){
+            var imgCenter = $("#center").attr("src");
+            var imgRight = $("#right").attr("src");
             $("#right").attr("src", imgCenter);
             $("#center").attr("src", imgRight);
         });
         $("#switch2").click(function(){
+            var imgLeft = $("#left").attr("src");
+            var imgCenter = $("#center").attr("src");
+            var imgRight = $("#right").attr("src");
             for(var i=2; i>=0; i--) {
                 var randomNumber = Math.floor(Math.random() * i);
                 if (randomNumber === 0) {
@@ -62,6 +67,32 @@
                 }
             }
         })
+
+        // $('#switch1').click(function(){
+        //     var left = $(this).parent().children().html();
+        //     var center = $(this).parent().children().next().html();
+        //     console.log(left);
+        //     console.log(center);
+        // });
+        //
+        // $('#switch2').click(function(){
+        //     var num = Math.round(Math.random());
+        //     var left = $(this).parent().children().html();
+        //     var center = $(this).parent().children().next().html();
+        //     var right = $(this).parent().children().next().next().html();
+        //     if (num === 1) {
+        //
+        //     } else {
+        //
+        //     }
+        // });
+        //
+        // $('#switch3').click(function() {
+        //     var center = $(this).parent().children().next().html();
+        //     var right = $(this).parent().children().next().next().html();
+        //     console.log(center);
+        //     console.log(right);
+        // });
     });
 
 </script>
