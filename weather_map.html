@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Weather Map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css' rel='stylesheet' />
@@ -10,12 +10,26 @@
         body {
             margin: 1em;
             padding: auto;
-            background-color: #ABDCFD;
+            background: #2980B9;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
         }
         .userInteraction {
             padding: 1em;
             width: 500px;
             margin: auto;
+        }
+
+        .card-body{
+            width: 250px;
+            height: 450px;
+        }
+        .card{
+            background: #FFEFBA;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
         }
         #weather {
             padding: 2em;
@@ -27,14 +41,14 @@
 
         #map {
             position: relative;
-            width: 90%;
+            width: 85%;
             height: 481px;
             margin: auto;
         }
     </style>
 </head>
 <body>
-<div class="weather-container">
+
 <h1 class="text-center">Welcome to: <span id="location"> San Antonio, TX</span></h1>
 <div id="weather">
     <div id="weatherCards" class="row">
@@ -51,10 +65,8 @@
 </div>
 
 <div id='map'></div>
-</div>
-<div class="cheats">
 
-</div>
+
 
 <!--js key and query link-->
 <script src="js/keys.js"></script>
@@ -62,7 +74,6 @@
 <!--mapbox utilities and JS-->
 <script src="js/mapbox-utils.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
 <!--bootstrap-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -161,20 +172,11 @@
         var lngLat = marker.getLngLat();
         var lng1 = lngLat.lng;
         var lat1 = lngLat.lat;
-        // var coord = [lng1, lat1];
         reverseGeocode({lng: lng1, lat: lat1}, mapboxToken).then(function(results) {
             console.log(results);
-            // for (var i = 0; i < results.length; i++) {
-            //     if (results[i].types[0] === "locality") {
-            //         var city = results[i].address_components[0].short_name;
-            //         var state = results[i].address_components[2].short_name;
-            //         $("input[name='location']").val(city + ", " + state);
-            //     }
                 $('#location').html(results)
             // }
         });
-        // changeLocation.style.display = 'block';
-        // changeLocation.innerHTML = 'Longitude: ' + lngLat.lng1 + '<br />Latitude: ' + lngLat.lat1;
         var dragSearch=("/" + lngLat.lat + "," + lngLat.lng);
         // var newLocation= (darkSkyUrl + darkSkyKey + dragSearch);
         // dailyForecast(newLocation);
@@ -185,26 +187,6 @@
         });
     }
     marker.on('dragend', onDragEnd);
-
-    //Easter Egg
-    //OG Konami Code
-    var konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
-    var konamiCodePosition=0;
-
-    $(document).on('keyup', function(e) {
-        var key = e.originalEvent.code;
-        var requiredKey = konamiCode[konamiCodePosition];
-        if (key === requiredKey) {
-            konamiCodePosition++;
-            if (konamiCodePosition === konamiCode.length) {
-                $(".cheats").html("<img id=\"contra\" src=\"img/contra-tv.png\" alt=\"contra\">");
-                restart();
-            }
-        } else {
-            konamiCodePosition = 0;
-        }
-    });
-
 
     //if you go to Mapbox API lesson, remember to go to reverse geocoding and geocoding. Functions already exist there.
 </script>
