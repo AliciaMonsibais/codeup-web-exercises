@@ -173,8 +173,17 @@
         var lng1 = lngLat.lng;
         var lat1 = lngLat.lat;
         reverseGeocode({lng: lng1, lat: lat1}, mapboxToken).then(function(results) {
-            console.log(results);
-                $('#location').html(results)
+            // console.log(results);
+            var locArray = results.split(", ");
+            console.log(locArray);
+            var removeZip = (locArray[locArray.length - 2]).split(" ");
+            removeZip.pop();
+            if ((locArray[locArray.length - 1]) == "United States") {
+                $('#location').text(locArray[locArray.length - 3] + ', ' + removeZip.join(' '));
+            } else {
+                $('#location').text(locArray[locArray.length - 3] + ', ' +locArray[locArray.length - 2] + ', ' + locArray[locArray.length - 1]);
+            }
+                // $('#location').html(results)
             // }
         });
         var dragSearch=("/" + lngLat.lat + "," + lngLat.lng);
