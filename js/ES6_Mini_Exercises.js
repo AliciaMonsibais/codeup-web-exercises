@@ -35,10 +35,10 @@ console.log(random);
      Refactor the code down below to use template strings.
  */
 
-const name = 'Alicia';
-const cohort = 'Betelgeuse';
-const greeting = `Hello, ${name}! You are in the ${cohort} cohort.`;
-console.log(greeting);
+// const name = 'Alicia';
+// const cohort = 'Betelgeuse';
+// const greeting = `Hello, ${name}! You are in the ${cohort} cohort.`;
+// console.log(greeting);
 
 /*
     FOR...OF
@@ -95,14 +95,14 @@ const square = x => x * x;
 
      Check your work.
  */
-const greeting = 'Good Morning';
-const name = 'Betelgeuse';
-const myGreeting = (greeting,name) => {
-   return greeting + name;
-};
-
-console.log(myGreeting());
-console.log(myGreeting("Hello", "Sophie"));
+// const greeting = 'Good Morning';
+// const name = 'Betelgeuse';
+// const myGreeting = (greeting = "Good Morning ", name = "Betelgeuse") => {
+//    return greeting + name;
+// };
+//
+// console.log(myGreeting());
+// console.log(myGreeting("Hello ", "Sophie"));
 
 /*
     OBJECT PROPERTY VARIABLE ASSIGNMENT
@@ -114,10 +114,11 @@ const cat = "Tom";
 const mouse = "Jerry";
 
 const pals = {
-    dog: dog,
-    cat: cat,
-    mouse: mouse
+    dog,
+    cat,
+    mouse
 };
+console.log(dog, cat, mouse);
 
 /*
     OBJECT DESTRUCTURING
@@ -134,9 +135,9 @@ const myCar = {
     color
 };
 
-const carInfo = (car) => {
-    var make = myCar.make;
-    var model = myCar.model;
+const carInfo = ({make, model}) => {
+    // var make = myCar.make;
+    // var model = myCar.model;
     console.log(make);
     console.log(model);
 };
@@ -149,3 +150,27 @@ carInfo(myCar);
      file? Use Array Destructuring to return the first 3 instructors. Use
       the curriculum example as a reference.
  */
+const [j, k, l] = instructors;
+const betelgeuseInstructors = [j, k];
+
+console.log(j);
+console.log(k);
+console.log(l);
+console.log(betelgeuseInstructors);
+
+//rewrite this as an arrow function
+//give greeting a default value of "Good Morning"
+//give cohort a default value of "Betelgeuse"
+//rewrite the return to use template strings instead of concatenation
+
+// function goodMorning(greeting,cohort){
+//     return greeting + " " + cohort + "!";
+// }
+
+
+const goodMorning = (greeting = "Good Morning", cohort = "Betelgeuse") => {
+    return `${greeting} ${cohort}!`;
+};
+console.log(goodMorning());
+console.log(goodMorning(undefined, "Ceres"));
+//if you want to use a variable outside of the console, use "undefined", and it will automatically use the default
