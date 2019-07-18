@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+</head>
+<body>
+
+<script>
+    const itWorked = () => console.log("It worked!");
+    const itFailed = () => console.error("It failed! :(");
+    const myPromise = new Promise ((resolve, reject) => {
+        if (Math.random() > 0.5) {
+            resolve();
+        } else {
+            reject();
+        }
+    })
+        //note the no semicolon on closing the Promise
+        .then(itWorked)
+        .catch(itFailed)
+</script>
+</body>
+</html>

@@ -59,11 +59,12 @@
             for(var i=2; i>=0; i--) {
                 var randomNumber = Math.floor(Math.random() * i);
                 if (randomNumber === 0) {
-                    $("#center").attr("src", imgLeft);
-                    $("#left").attr("src", imgCenter)
-                } else {
                     $("#center").attr("src", imgRight);
-                    $("#right").attr("src", imgCenter)
+                    $("#left").attr("src", imgCenter);
+                    $('#right').attr("src", imgLeft);
+                } else {
+                    $("#center").attr("src", imgLeft);
+                    $("#right").attr("src", imgCenter);
                 }
             }
         })

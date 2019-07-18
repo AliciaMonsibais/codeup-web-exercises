@@ -166,7 +166,7 @@
     })
         .setLngLat([lng, lat])
         .addTo(map);
-//use mapbox.places??
+
     //populates new location and weather when dragging marker
     function onDragEnd(){
         var lngLat = marker.getLngLat();
@@ -183,12 +183,8 @@
             } else {
                 $('#location').text(locArray[locArray.length - 3] + ', ' +locArray[locArray.length - 2] + ', ' + locArray[locArray.length - 1]);
             }
-                // $('#location').html(results)
-            // }
         });
         var dragSearch=("/" + lngLat.lat + "," + lngLat.lng);
-        // var newLocation= (darkSkyUrl + darkSkyKey + dragSearch);
-        // dailyForecast(newLocation);
         $.get(darkSkyUrl + darkSkyKey + dragSearch).done(function(data){
             $('#weatherCards').html(dailyForecast(data.daily.data));
         }) .fail(function() {
@@ -196,7 +192,7 @@
         });
     }
     marker.on('dragend', onDragEnd);
-
+    //adding geolocator from mapbox tools
     map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
             enableHighAccuracy: true,
