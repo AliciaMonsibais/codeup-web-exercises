@@ -93,16 +93,24 @@
 <button class="btn nifty">Nifty Button</button>
 
 <!--Bonus-->
-<!--<div class="row">-->
-<!--    <div class="col">1</div>-->
-<!--    <div class="col">2</div>-->
-<!--    <div class="col">3</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--    <div class="col"><button class="btn">1</button></div>-->
-<!--    <div class="col"><button class="btn">2</button></div>-->
-<!--    <div class="col"><button class="btn">3</button></div>-->
-<!--</div>-->
+<div class="container-flex">
+    <div class="row">
+        <div class="col-4">
+            <img src="img/james.png" id="left" >
+        </div>
+        <div class="col-4">
+            <img src="img/maria.png" id="center">
+        </div>
+        <div class="col-4">
+            <img src="img/Pyramid_Head.png" id="right" >
+        </div>
+    </div>
+    <div class="row">
+        <button type = "button" class="col-4 btn" id="switch1">Switch</button>
+        <button type = "button" class="col-4 btn" id="switch2">Switch</button>
+        <button type = "button" class="col-4 btn" id="switch3">Switch</button>
+    </div>
+</div>
 
 <script src="js/jquery-2.x-git.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -161,7 +169,37 @@
     //Bonus
     // Create 3 divs that each look like a picture frame. Each one should have a unique background image and a button underneath that swaps the image from the frame. Use the traversing functions of jQuery to accomplish this.
 
-</script>
+    $(document).ready(function(){
 
+        $("#switch1").click(function(){
+            var imgLeft = $("#left").attr("src");
+            var imgCenter = $("#center").attr("src");
+            $("#left").attr("src", imgCenter);
+            $("#center").attr("src", imgLeft);
+        });
+        $("#switch3").click(function(){
+            var imgCenter = $("#center").attr("src");
+            var imgRight = $("#right").attr("src");
+            $("#right").attr("src", imgCenter);
+            $("#center").attr("src", imgRight);
+        });
+        $("#switch2").click(function(){
+            var imgLeft = $("#left").attr("src");
+            var imgCenter = $("#center").attr("src");
+            var imgRight = $("#right").attr("src");
+            for(var i=2; i>=0; i--) {
+                var randomNumber = Math.floor(Math.random() * i);
+                if (randomNumber === 0) {
+                    $("#center").attr("src", imgRight);
+                    $("#left").attr("src", imgCenter);
+                    $('#right').attr("src", imgLeft);
+                } else {
+                    $("#center").attr("src", imgLeft);
+                    $("#right").attr("src", imgCenter);
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

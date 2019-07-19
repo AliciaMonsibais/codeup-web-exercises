@@ -35,16 +35,16 @@
         var mapOptions = {
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 12,
+            zoom: 11,
             center: sanAntonio
         };
         var myMap = new mapboxgl.Map(mapOptions);
-        myMap.setZoom(15);
+        myMap.setZoom(11);
 
         var favoriteRestaurants = [
             {name: "La Fonda on Main"},
             {name: "Madhatters Tea House & Cafe"},
-            {name: "Sawasdee Thai Restaurant"}
+            {name: "Sawasdee Thai Cuisine"}
         ];
 
         favoriteRestaurants.forEach(function (item){
