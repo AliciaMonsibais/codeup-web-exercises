@@ -96,4 +96,5 @@ const uniqueLanguages = users.reduce(function(prev, current){
     }
     return prev;
 }, new Set);
+
 //new Set checks for unique values. It does the sorting for you.

@@ -1,28 +1,37 @@
-// (function(){
-// "use strict";
-//     for (var i = 1; i < 101; i++){
-//         if (i % 15 === 0)
-//             console.log("FizzBuzz");
-//         else if (i % 3 === 0){
-//             console.log("Fizz");
-//         } else if (i % 5 === 0) {
-//             console.log("Buzz");
-//         } else {
-//             console.log(i);
-//         }
-//     }
+(function() {
+    "use strict";
+    // function fizzbuzz(input) {
+        // for (var i = 1; i < input; i++) {
+        //     //     if (i % 15 === 0) {
+        //     //         console.log("FizzBuzz");
+        //     //     } else if (i % 3 === 0) {
+        //     //         console.log("Fizz");
+        //     //     } else if (i % 5 === 0) {
+        //     //         console.log("Buzz");
+        //     //     } else {
+        //     //         console.log(i);
+        //     //     }
+    //              }
+    //     // }
 
-    // var isColdOutside = true;
-    //
-    // var clothingToWear;
-    //
-    // if (isColdOutside) {
-    //     clothingToWear = 'sweater and a jacket';
-    // } else {
-    //     clothingToWear = 'shorts and a t-shirt';
-    // }
-    // console.log(isColdOutside);
-var array = ['John', 'Paul', 'George', 'Ringo', 'Santana'];
+//using es6
+    const fizzbuzz = input => {
+        for (let i = 1; i < input; i++) {
+            if (i % 15 === 0){
+                console.log("FizzBuzz");
+            } else if (i % 3 === 0){
+                console.log("Fizz");
+            } else if (i % 5 === 0){
+                console.log("Buzz");
+            } else{
+                console.log(i);
+            }
+        }
+    };
+}());
+
+
+
 // var output = [];
 // var a = 1;
 //
