@@ -1,3 +1,18 @@
-/*.calculator-keys {*/
-/*    display: grid;*/
-/*}*/
+.uk-container {
+    width: 500px;
+}
+.calculator {
+    padding: 1em;
+}
+.user-output {
+    padding-bottom: 1em;
+}
+#left-operand, #right-operand {
+    width: 100px;
+    height: 30px;
+}
+
+#operator {
+    width: 50px;
+    height: 30px;
+}

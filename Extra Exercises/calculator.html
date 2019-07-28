@@ -8,12 +8,12 @@
     <title>Calculator</title>
 </head>
 <body>
-<main class="container">
+<div class="uk-container">
     <div class = "calculator">
-            <div>
-                <input type="text" id="left-operand" readonly>
-                <input type="text" id="operator" readonly>
-                <input type="text" id="right-operand" readonly>
+            <div class = "user-output">
+                <textarea class="uk-textarea" id="left-operand" readonly></textarea>
+                <textarea class="uk-textarea" id="operator" readonly></textarea>
+                <textarea class="uk-textarea" id="right-operand" readonly></textarea>
             </div>
             <div class ="buttons">
                 <div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
     </div>
-</main>
+</div>
 
 <script src="../js/jquery-2.x-git.js"></script>
 <!-- UIkit JS -->
