@@ -9,13 +9,15 @@
 </head>
 <body>
 <div class="uk-container">
-    <div class = "calculator">
-            <div class = "user-output">
-                <textarea class="uk-textarea" id="left-operand" readonly></textarea>
-                <textarea class="uk-textarea" id="operator" readonly></textarea>
-                <textarea class="uk-textarea" id="right-operand" readonly></textarea>
+    <div class = "uk-position-center calculator">
+        <div class="all-the-buttons">
+            <div class = "uk-position-top-center user-output">
+                <input class="uk-input" id="left-operand" readonly>
+                <input class="uk-input" id="operator" readonly>
+                <input class="uk-input" id="right-operand" readonly>
             </div>
-            <div class ="buttons">
+            <br>
+            <div class ="uk-position-center buttons">
                 <div>
                     <button class="uk-button numbers" value="1">1</button>
                     <button class="uk-button numbers" value="2">2</button>
@@ -32,7 +34,7 @@
                     <button class="uk-button numbers" value="7">7</button>
                     <button class="uk-button numbers" value="8">8</button>
                     <button class="uk-button numbers" value="9">9</button>
-                    <button class="uk-button" id="multiply" value="&times;">&times;</button>
+                    <button class="uk-button" id="multiply" value="×">×</button>
                 </div>
                 <div>
                     <button class="uk-button numbers" value="0">0</button>
@@ -44,6 +46,7 @@
                     <button class="uk-button" id="clear" value="C">C</button>
                     <button class="uk-button numbers" type="submit"  value="-">+/-</button>
                 </div>
+            </div>
             </div>
     </div>
 </div>

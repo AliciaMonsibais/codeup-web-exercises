@@ -26,10 +26,10 @@
             case "-":
                 evaluation = (left - right);
                 break;
-            case "*":
+            case "×":
                 evaluation = (left * right);
                 break;
-            case "/":
+            case "÷":
                 evaluation = (left / right);
                 break;
             default:
@@ -37,7 +37,7 @@
         }
         document.getElementById("left-operand").value = evaluation;
         document.getElementById("right-operand").value = "";
-    }
+    };
 
 // Setup Clear
     var clear = document.getElementById("clear");
